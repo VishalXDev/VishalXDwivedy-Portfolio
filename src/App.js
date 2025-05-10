@@ -1,4 +1,5 @@
 // src/App.jsx
+// import { Analytics } from "@vercel/analytics/react"
 import React, { useState } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 import Navbar from './components/Navbar';
@@ -10,7 +11,6 @@ import Projects from './components/Projects';
 import Experience from './components/Experience';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
-
 const sectionComponents = {
   home: <Hero />,
   about: <About />,

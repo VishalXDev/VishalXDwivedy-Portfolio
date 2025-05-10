@@ -1,4 +1,3 @@
-// src/components/Skills.jsx
 import React from 'react';
 import { motion } from 'framer-motion';
 
@@ -38,9 +37,7 @@ const Skills = () => {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
-      transition: {
-        staggerChildren: 0.1
-      }
+      transition: { staggerChildren: 0.1 }
     }
   };
 
@@ -49,17 +46,17 @@ const Skills = () => {
     visible: {
       opacity: 1,
       y: 0,
-      transition: { duration: 0.6 }
+      transition: { duration: 0.5 }
     }
   };
 
   return (
-    <section id="skills" className="py-16 bg-gray-900">
+    <section id="skills" className="pt-1 pb-10 bg-gray-900">
       <div className="container mx-auto px-4">
-        <h2 className="text-3xl font-semibold mb-12 text-center">Skills</h2>
-        
+        <h2 className="text-2xl font-semibold mb-6 text-center">Skills</h2>
+
         <motion.div
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4"
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
@@ -68,15 +65,15 @@ const Skills = () => {
           {skillCategories.map((category, index) => (
             <motion.div
               key={index}
-              className="bg-dark p-6 rounded-lg shadow-md"
+              className="bg-dark p-4 rounded-md shadow-sm"
               variants={itemVariants}
             >
-              <h3 className="text-xl font-medium mb-4 text-primary">{category.title}</h3>
-              <div className="flex flex-wrap gap-2">
+              <h3 className="text-lg font-medium mb-3 text-primary">{category.title}</h3>
+              <div className="flex flex-wrap gap-1.5">
                 {category.skills.map((skill, skillIndex) => (
                   <span
                     key={skillIndex}
-                    className="bg-gray-800 text-light px-3 py-1 rounded text-sm"
+                     className="bg-gray-800 text-light px-2 py-0.5 rounded text-xs transition duration-300 cursor-cell ease-in-out hover:bg-primary hover:text-white hover:shadow-[0_0_8px_#00f6ff]"
                   >
                     {skill}
                   </span>

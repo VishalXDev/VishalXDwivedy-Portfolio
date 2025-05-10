@@ -5,7 +5,7 @@ import { motion } from 'framer-motion';
 
 const Hero = () => {
   return (
-    <section id="home" className="pt-24 pb-16 min-h-screen flex items-center">
+    <section id="home" className="pt-0 pb-16 min-h-screen flex items-center">
       <div className="container mx-auto px-4">
         <div className="flex flex-col md:flex-row items-center justify-between">
           {/* Left content */}
@@ -16,8 +16,8 @@ const Hero = () => {
             transition={{ duration: 0.8 }}
           >
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-semibold mb-4">
-              Hi, I'm <span className="text-primary">Vishal</span>
-              <br />
+              Hi, I'm <span className="text-primary">Vishal </span>
+              {/* <br /> */}
               <span className="text-secondary">Dwivedy</span>
             </h1>
 
@@ -72,7 +72,7 @@ const Hero = () => {
                 <FaGithub className="text-white" />
               </a>
               <a
-                href="https://www.linkedin.com/"
+                href="https://www.linkedin.com/in/vishal-dwivedy"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-10 h-10 border border-gray-600 rounded-full flex items-center justify-center hover:border-primary hover:bg-primary/10 transition-colors duration-300"

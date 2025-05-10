@@ -5,7 +5,7 @@ import { FaLinkedin, FaGithub, FaPhone, FaEnvelope } from "react-icons/fa";
 
 const About = () => {
   return (
-    <section id="about" className="py-16">
+    <section id="about" className="pt-8 pb-16">
       <div className="container mx-auto px-4">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -13,21 +13,24 @@ const About = () => {
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
         >
-          <h2 className="text-3xl font-semibold mb-8 text-center">About Me</h2>
+          <h2 className="text-4xl font-bold text-center text-white mb-8">About Me</h2>
 
-          <div className="max-w-3xl mx-auto">
-            <h3 className="text-xl font-medium mb-4 text-primary text-center">
-              Software Engineer <br />
-              MERN Stack Developer • Full-Stack Development • Cloud & DevOps 
+          <div className="max-w-3xl mx-auto text-center">
+            <h3 className="text-2xl font-semibold text-primary mb-4">
+              Software Engineer
             </h3>
+            <p className="text-light mb-6">
+              MERN Stack Developer • Full-Stack Development • Cloud & DevOps
+            </p>
 
-            <div className="mb-6">
-              <div className="flex items-center mb-3">
-                <FaPhone className="mr-2" />
-                <span>7004212369</span>
+            {/* Contact Info */}
+            <div className="space-y-4 mb-10 text-left">
+              <div className="flex items-center gap-2">
+                <FaPhone className="text-primary" />
+                <span className="text-light">7004212369</span>
               </div>
-              <div className="flex items-center mb-3">
-                <FaEnvelope className="mr-2" />
+              <div className="flex items-center gap-2">
+                <FaEnvelope className="text-primary" />
                 <a
                   href="mailto:Vishaldwidy@gmail.com"
                   className="text-secondary hover:underline"
@@ -35,8 +38,8 @@ const About = () => {
                   Vishaldwidy@gmail.com
                 </a>
               </div>
-              <div className="flex items-center mb-3">
-                <FaLinkedin className="mr-2 text-blue-600" />
+              <div className="flex items-center gap-2">
+                <FaLinkedin className="text-blue-600" />
                 <a
                   href="https://www.linkedin.com/in/vishal-dwivedy"
                   target="_blank"
@@ -46,8 +49,8 @@ const About = () => {
                   LinkedIn
                 </a>
               </div>
-              <div className="flex items-center">
-                <FaGithub className="mr-2" />
+              <div className="flex items-center gap-2">
+                <FaGithub className="text-white" />
                 <a
                   href="https://github.com/VishalXDev"
                   target="_blank"
@@ -59,15 +62,11 @@ const About = () => {
               </div>
             </div>
 
-            <div className="bg-gray-900 p-6 rounded-lg shadow-md">
-              <h3 className="text-xl font-medium mb-4 text-primary">SUMMARY</h3>
-              <p className="text-light">
-                Software Engineer (SDE-1) with hands-on experience building
-                scalable, secure, and maintainable web applications using
-                React.js, Node.js, and AWS. Adept in microservices, REST APIs,
-                serverless (AWS Lambda), and CI/CD. Proven ability to optimize
-                performance and ship features in agile, cloud-native
-                environments using AI and automation tools.
+            {/* Summary Box */}
+            <div className="bg-dark p-6 rounded-xl shadow-lg">
+              <h3 className="text-xl font-semibold text-primary mb-4">SUMMARY</h3>
+              <p className="text-light leading-relaxed">
+                Software Engineer (SDE-1) with hands-on experience building scalable, secure, and maintainable web applications using React.js, Node.js, and AWS. Adept in microservices, REST APIs, serverless (AWS Lambda), and CI/CD. Proven ability to optimize performance and ship features in agile, cloud-native environments using AI and automation tools.
               </p>
             </div>
           </div>
