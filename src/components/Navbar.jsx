@@ -13,6 +13,7 @@ const Navbar = ({ scrollToSection, activeSection }) => {
     { title: 'Home', id: 'home' },
     { title: 'About', id: 'about' },
     { title: 'Education', id: 'education' },
+    { title: 'Experience', id: 'experience' },
     { title: 'Skills', id: 'skills' },
     { title: 'Portfolio', id: 'projects' },
     { title: 'Contact', id: 'contact' },

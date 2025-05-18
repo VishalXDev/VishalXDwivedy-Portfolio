@@ -9,22 +9,56 @@ const Contact = () => {
     subject: '',
     message: '',
   });
+  const [formStatus, setFormStatus] = useState({
+    isSubmitting: false,
+    isSubmitted: false,
+    error: null
+  });
 
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log('Form submitted:', formData);
-    alert('Thank you for your message! I will get back to you soon.');
-    setFormData({
-      name: '',
-      email: '',
-      subject: '',
-      message: '',
-    });
+    setFormStatus({ isSubmitting: true, isSubmitted: false, error: null });
+    
+    try {
+      // Example implementation using EmailJS
+      // You would need to set up an account and install emailjs-com
+      // import emailjs from 'emailjs-com';
+      // await emailjs.send(
+      //   'YOUR_SERVICE_ID',
+      //   'YOUR_TEMPLATE_ID',
+      //   formData,
+      //   'YOUR_USER_ID'
+      // );
+      
+      // For now, we'll simulate a successful submission
+      await new Promise(resolve => setTimeout(resolve, 1000));
+      
+      setFormStatus({
+        isSubmitting: false,
+        isSubmitted: true,
+        error: null
+      });
+      
+      // Reset form after successful submission
+      setFormData({
+        name: '',
+        email: '',
+        subject: '',
+        message: '',
+      });
+    } catch (error) {
+      console.error('Form submission error:', error);
+      setFormStatus({
+        isSubmitting: false,
+        isSubmitted: false,
+        error: 'There was an error sending your message. Please try again.'
+      });
+    }
   };
 
   const contactInfo = [
@@ -70,44 +104,66 @@ const Contact = () => {
           >
             <h3 className="text-lg font-semibold text-primary mb-4">Send Me a Message</h3>
 
-            <form onSubmit={handleSubmit}>
-              {['name', 'email', 'subject'].map((field, idx) => (
-                <div className="mb-3" key={idx}>
-                  <label htmlFor={field} className="block text-sm text-light mb-1 capitalize">
-                    {field === 'email' ? 'Your Email' : `Your ${field}`}
-                  </label>
-                  <input
-                    type={field === 'email' ? 'email' : 'text'}
-                    id={field}
-                    name={field}
-                    value={formData[field]}
+            {formStatus.isSubmitted ? (
+              <div className="bg-green-900/30 border border-green-700 text-green-200 p-4 rounded-md">
+                <p className="font-medium">Thank you for your message!</p>
+                <p className="text-sm mt-1">I'll get back to you as soon as possible.</p>
+                <button 
+                  onClick={() => setFormStatus(prev => ({...prev, isSubmitted: false}))}
+                  className="mt-3 text-sm bg-green-700/50 hover:bg-green-700 px-4 py-1 rounded-md transition-colors"
+                >
+                  Send another message
+                </button>
+              </div>
+            ) : (
+              <form onSubmit={handleSubmit}>
+                {['name', 'email', 'subject'].map((field, idx) => (
+                  <div className="mb-3" key={idx}>
+                    <label htmlFor={field} className="block text-sm text-light mb-1 capitalize">
+                      {field === 'email' ? 'Your Email' : `Your ${field}`}
+                    </label>
+                    <input
+                      type={field === 'email' ? 'email' : 'text'}
+                      id={field}
+                      name={field}
+                      value={formData[field]}
+                      onChange={handleChange}
+                      className="w-full bg-gray-800 text-sm text-white border border-gray-700 rounded-md p-2 focus:outline-none focus:border-primary"
+                      required
+                      disabled={formStatus.isSubmitting}
+                    />
+                  </div>
+                ))}
+
+                <div className="mb-4">
+                  <label htmlFor="message" className="block text-sm text-light mb-1">Your Message</label>
+                  <textarea
+                    id="message"
+                    name="message"
+                    value={formData.message}
                     onChange={handleChange}
+                    rows="4"
                     className="w-full bg-gray-800 text-sm text-white border border-gray-700 rounded-md p-2 focus:outline-none focus:border-primary"
                     required
-                  />
+                    disabled={formStatus.isSubmitting}
+                  ></textarea>
                 </div>
-              ))}
 
-              <div className="mb-4">
-                <label htmlFor="message" className="block text-sm text-light mb-1">Your Message</label>
-                <textarea
-                  id="message"
-                  name="message"
-                  value={formData.message}
-                  onChange={handleChange}
-                  rows="4"
-                  className="w-full bg-gray-800 text-sm text-white border border-gray-700 rounded-md p-2 focus:outline-none focus:border-primary"
-                  required
-                ></textarea>
-              </div>
+                {formStatus.error && (
+                  <div className="mb-4 text-red-400 text-sm bg-red-900/30 p-2 rounded border border-red-700">
+                    {formStatus.error}
+                  </div>
+                )}
 
-              <button
-                type="submit"
-                className="bg-primary text-sm text-white font-medium px-5 py-2 rounded-md hover:bg-purple-700 transition duration-300"
-              >
-                Send
-              </button>
-            </form>
+                <button
+                  type="submit"
+                  className="bg-primary text-sm text-white font-medium px-5 py-2 rounded-md hover:bg-purple-700 transition duration-300 disabled:opacity-70 disabled:cursor-not-allowed"
+                  disabled={formStatus.isSubmitting}
+                >
+                  {formStatus.isSubmitting ? 'Sending...' : 'Send'}
+                </button>
+              </form>
+            )}
           </motion.div>
 
           {/* Contact Info */}
@@ -148,7 +204,7 @@ const Contact = () => {
                 Open to projects, creative ideas, or collaborations.
               </p>
               <p className="text-light text-sm">
-                Have a question or want to say hi? I’ll try my best to respond!
+                Have a question or want to say hi? I'll try my best to respond!
               </p>
             </div>
           </motion.div>

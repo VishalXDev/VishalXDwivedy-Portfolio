@@ -4,6 +4,10 @@
 @tailwind components;
 @tailwind utilities;
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   margin: 0;
   font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -11,23 +15,41 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  scroll-behavior: smooth;
   background-color: #0a0a0a;
   color: #fff;
-  overflow: hidden; /* ✅ Disable scroll by default */
-  overflow-x: hidden;
+  overflow-x: hidden; /* Allow vertical scrolling but prevent horizontal */
 }
 
-/* Ensure each section takes at least the height of the viewport */
+/* Ensure each section takes appropriate height without forcing full viewport */
 section {
-  min-height: 100vh;
+  min-height: 90vh; /* Slightly reduced from 100vh to avoid scroll issues */
   display: flex;
   flex-direction: column;
   justify-content: center;
   padding-top: 70px; /* To account for the fixed navbar */
+  scroll-margin-top: 70px; /* For proper scroll positioning with fixed header */
 }
 
-/* Prevent default anchor behavior which causes page jumps */
-a[href^="#"] {
-  scroll-behavior: smooth;
+/* For proper page navigation */
+#home {
+  min-height: 100vh; /* Keep hero at full height */
+}
+
+/* Smooth scrolling for navigation links */
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* Improved focus styles for accessibility */
+:focus {
+  outline: 2px solid #9333ea;
+  outline-offset: 2px;
+}
+
+/* Transition utilities for smoother animation experiences */
+.transition-all {
+  transition-property: all;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
 }
