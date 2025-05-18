@@ -20,19 +20,20 @@ body {
   overflow-x: hidden; /* Allow vertical scrolling but prevent horizontal */
 }
 
-/* Ensure each section takes appropriate height without forcing full viewport */
+/* Updated section styles for tab-based navigation */
 section {
-  min-height: 90vh; /* Slightly reduced from 100vh to avoid scroll issues */
+  min-height: calc(100vh - 150px); /* Account for header and footer */
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  padding-top: 70px; /* To account for the fixed navbar */
-  scroll-margin-top: 70px; /* For proper scroll positioning with fixed header */
+  justify-content: flex-start; /* Changed from center to better handle content */
+  padding-top: 20px; /* Reduced from 70px since we're already using pt-24 in the main container */
+  width: 100%;
 }
 
-/* For proper page navigation */
+/* Keep hero section special styling */
 #home {
-  min-height: 100vh; /* Keep hero at full height */
+  min-height: calc(100vh - 150px);
+  justify-content: center;
 }
 
 /* Smooth scrolling for navigation links */

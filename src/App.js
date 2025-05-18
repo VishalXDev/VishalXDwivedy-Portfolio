@@ -1,5 +1,4 @@
 // src/App.jsx
-// import { Analytics } from "@vercel/analytics/react"
 import React, { useState } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 import Navbar from './components/Navbar';
@@ -11,6 +10,7 @@ import Projects from './components/Projects';
 import Experience from './components/Experience';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
+
 const sectionComponents = {
   home: <Hero />,
   about: <About />,
@@ -32,12 +32,26 @@ function App() {
 
   const scrollToSection = (sectionId) => {
     setActiveSection(sectionId);
+    // Scroll to top when changing sections
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   };
+  
+  // Listen for navigation events from components
+  React.useEffect(() => {
+    const handleNavigate = (e) => {
+      scrollToSection(e.detail);
+    };
+    
+    document.addEventListener('navigate', handleNavigate);
+    return () => {
+      document.removeEventListener('navigate', handleNavigate);
+    };
+  }, []);
 
   return (
     <div className="min-h-screen bg-dark text-white overflow-auto">
       <Navbar scrollToSection={scrollToSection} activeSection={activeSection} />
-      <main className="pt-24 px-4">
+      <main className="pt-24 px-4 min-h-screen"> {/* Added min-h-screen to ensure full height */}
         <AnimatePresence mode="wait">
           <motion.div
             key={activeSection}
@@ -46,6 +60,7 @@ function App() {
             animate="animate"
             exit="exit"
             transition={{ duration: 0.6 }}
+            className="min-h-[calc(100vh-96px)]" /* This ensures content fills the viewport minus header/footer */
           >
             {sectionComponents[activeSection]}
           </motion.div>

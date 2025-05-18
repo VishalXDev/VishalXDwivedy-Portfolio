@@ -1,48 +1,22 @@
-// src/pages/section.jsx
-import React, { useEffect } from 'react';
-import Education from '../components/Education';
-import Skills from '../components/Skills';
-import Projects from '../components/Projects';
-import Experience from '../components/Experience';
-import Contact from '../components/Contact';
-import Section from '../components/Section';
+// src/components/Section.jsx
+import React from 'react';
+import { motion } from 'framer-motion';
 
-const SectionPage = () => {
-  useEffect(() => {
-    const hash = window.location.hash;
-    if (hash) {
-      const el = document.querySelector(hash);
-      if (el) {
-        setTimeout(() => {
-          el.scrollIntoView({ behavior: 'smooth' });
-        }, 100); // Delay ensures DOM is ready
-      }
-    }
-  }, []);
-
+const Section = ({ id, title, children }) => {
   return (
-    <main className="pt-24 bg-dark text-white min-h-screen">
-      <Section id="education" title="Education">
-        <Education />
-      </Section>
-
-      <Section id="skills" title="Skills">
-        <Skills />
-      </Section>
-
-      <Section id="projects" title="Projects">
-        <Projects />
-      </Section>
-
-      <Section id="experience" title="Experience">
-        <Experience />
-      </Section>
-
-      <Section id="contact" title="Contact">
-        <Contact />
-      </Section>
-    </main>
+    <section id={id} className="pt-8 pb-16">
+      <div className="container mx-auto px-4">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+        >
+          {title && <h2 className="text-4xl font-bold text-center text-white mb-8">{title}</h2>}
+          {children}
+        </motion.div>
+      </div>
+    </section>
   );
 };
 
-export default SectionPage;
+export default Section;

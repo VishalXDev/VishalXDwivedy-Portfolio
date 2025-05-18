@@ -1,63 +1,54 @@
-import React from "react";
-import { FaGithub, FaExternalLinkAlt } from "react-icons/fa";
 import { motion } from "framer-motion";
+import { FaGithub, FaExternalLinkAlt } from "react-icons/fa";
 
 const Projects = () => {
   const projects = [
     {
-      title: "Resume Analyzer",
+      title: "E-Commerce App",
       description:
-        "Built an AI-powered web app that matches resumes with job descriptions using OpenAI & Gemini.",
-      technologies: [
-        "React",
-        "Node.js",
-        "PostgreSQL",
-        "Drizzle ORM",
-        "OpenAI",
-        "Clerk Auth",
-        "Vercel",
-      ],
+        "A full-featured React Native app using Expo Router with product listings, cart functionality, and persistent storage.",
+      technologies: ["React Native", "Expo Router", "Context API", "AsyncStorage"],
       points: [
-        "Integrated Clerk Auth and OAuth 2.0 for secure access, used PostgreSQL and Drizzle ORM for data modeling.",
-        "Deployed on Vercel with CI/CD, improving match accuracy by 60% through prompt tuning and structured embeddings.",
+        "Built with Expo Router and Context API for clean routing and global state management.",
+        "Supports cart operations, local storage with AsyncStorage, and responsive design.",
       ],
-      github: "https://github.com/VishalXDev",
+      github: "https://github.com/VishalXDev/e-commerce-app",
+      demo: "https://e-commerce-app-ten-beryl.vercel.app/",
+    },
+    {
+      title: "Restro Dashboard",
+      description:
+        "An admin dashboard for managing restaurant menus, orders, and user roles.",
+      technologies: ["React", "Tailwind CSS", "Node.js", "MongoDB"],
+      points: [
+        "Implemented dashboard views with charts, stats, and role-based access.",
+        "Built APIs for menu updates, order tracking, and real-time data updates.",
+      ],
+      github: "https://github.com/VishalXDev/Restro-dashboard",
       demo: null,
     },
     {
-      title: "Segwise – Interactive Table UI",
+      title: "FlockShop.Ai",
       description:
-        "Developed a high-performance table UI with Zustand, TypeScript, and Tailwind CSS.",
-      technologies: ["React", "TypeScript", "Tailwind CSS", "Zustand"],
+        "A shared wishlist platform with futuristic UI/UX, allowing collaborative shopping experiences.",
+      technologies: ["Next.js", "Firebase", "MongoDB", "Tailwind CSS"],
       points: [
-        "Included filters, modals, and pagination with <200ms load time.",
-        "Enhanced UX across devices with mobile-first responsive design from Figma.",
+        "Built complete full-stack app with user authentication and wishlist sharing.",
+        "Designed futuristic UI inspired by sci-fi themes using Tailwind CSS.",
       ],
-      github: "https://github.com/VishalXDev",
-      demo: "https://demo-link.com/",
-    },
-    {
-      title: "Hospital Food-Management System",
-      description:
-        "A comprehensive system for managing hospital food services and dietary requirements.",
-      technologies: ["React", "Express.js", "MongoDB", "Docker"],
-      points: [
-        "Implemented role-based access control for different stakeholders.",
-        "Built a real-time notification system for dietary updates and meal deliveries.",
-      ],
-      github: "https://github.com/VishalXDev",
+      github: "https://github.com/VishalXDev/FlockShop.Ai",
       demo: null,
     },
     {
-      title: "Shopify-Shop",
+      title: "Pgagi Dashboard",
       description:
-        "E-commerce platform with product management, cart functionality, and payment integration.",
-      technologies: ["Next.js", "Node.js", "MongoDB", "Stripe"],
+        "A sleek analytics dashboard using charts, animations, and responsive design.",
+      technologies: ["Next.js", "TypeScript", "Tailwind CSS", "Framer Motion"],
       points: [
-        "Built with Next.js for improved SEO and performance.",
-        "Integrated Stripe payment gateway for secure transactions.",
+        "Built dynamic dashboard with animated charts and custom theming.",
+        "Used Framer Motion and Recharts for interactive visuals and transitions.",
       ],
-      github: "https://github.com/VishalXDev",
+      github: "https://github.com/VishalXDev/Pgagi-Dashboard",
       demo: null,
     },
   ];
@@ -74,32 +65,25 @@ const Projects = () => {
           {projects.map((project, index) => (
             <motion.div
               key={index}
-              className="bg-dark rounded-lg overflow-hidden shadow-md" // reduced shadow size
+              className="bg-dark rounded-lg overflow-hidden shadow-md"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: (index % 2) * 0.2 }}
               viewport={{ once: true }}
             >
-              {/* Project Title Placeholder */}
               <div className="h-32 bg-gray-800 flex items-center justify-center">
-                {" "}
-                {/* reduced height */}
                 <span className="text-lg text-primary font-semibold text-center px-2">
                   {project.title}
                 </span>
               </div>
 
               <div className="p-4">
-                {" "}
-                {/* reduced padding */}
                 <h3 className="text-lg font-semibold mb-1">
                   {project.title}
-                </h3>{" "}
-                {/* reduced text size */}
+                </h3>
                 <p className="text-sm text-light mb-3">
                   {project.description}
-                </p>{" "}
-                {/* smaller description */}
+                </p>
                 <div className="mb-3 flex flex-wrap gap-1">
                   {project.technologies.map((tech, techIndex) => (
                     <span

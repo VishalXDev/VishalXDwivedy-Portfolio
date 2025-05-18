@@ -31,7 +31,7 @@ const Hero = () => {
   }, [isSpeaking]);
 
   return (
-    <section id="home" className="pt-0 pb-16 min-h-screen flex items-center">
+    <section id="home" className="flex items-center">
       <div className="container mx-auto px-4">
         <div className="flex flex-col md:flex-row items-center justify-between">
           {/* Left content */}
@@ -57,12 +57,12 @@ const Hero = () => {
 
             {/* CTA Buttons */}
             <div className="flex flex-wrap gap-4 mb-8">
-              <a
-                href="#contact"
+              <button
+                onClick={() => document.dispatchEvent(new CustomEvent('navigate', { detail: 'contact' }))}
                 className="bg-primary text-white px-8 py-3 rounded hover:bg-purple-700 transition-colors duration-300"
               >
                 Hire Me
-              </a>
+              </button>
               <a
                 href="https://drive.google.com/uc?export=download&id=YOUR_GOOGLE_DRIVE_FILE_ID"
                 className="border-2 border-primary text-white px-8 py-3 rounded hover:bg-primary/10 transition-colors duration-300"
