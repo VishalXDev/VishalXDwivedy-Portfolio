@@ -3,12 +3,11 @@ import {
   FaInstagram, FaGithub, FaLinkedinIn,
   FaVolumeUp, FaVolumeMute, FaRocket, FaCode, FaBolt
 } from 'react-icons/fa';
-import { m } from 'framer-motion';
+import { motion as m, useMotionValue, useTransform } from 'framer-motion';
 
 const Hero = () => {
   const [isSpeaking, setIsSpeaking] = useState(false);
   const heroRef = useRef(null);
-
   const introduction = "Hi, I'm Vishal Dwivedy, a Software Engineer specializing in cutting-edge web development.";
 
   const toggleSpeech = useCallback(() => {
@@ -29,6 +28,22 @@ const Hero = () => {
     { icon: FaLinkedinIn, href: "https://www.linkedin.com/in/vishal-dwivedy", color: "hover:text-blue-400" }
   ], []);
 
+  const x = useMotionValue(0);
+  const y = useMotionValue(0);
+  const rotateX = useTransform(y, [-50, 50], [15, -15]);
+  const rotateY = useTransform(x, [-50, 50], [-15, 15]);
+
+  const handleMouseMove = useCallback((e) => {
+    const rect = e.currentTarget.getBoundingClientRect();
+    x.set(e.clientX - rect.left - rect.width / 2);
+    y.set(e.clientY - rect.top - rect.height / 2);
+  }, [x, y]);
+
+  const handleMouseLeave = useCallback(() => {
+    x.set(0);
+    y.set(0);
+  }, [x, y]);
+
   return (
     <section
       id="home"
@@ -42,30 +57,30 @@ const Hero = () => {
       </div>
 
       <div className="container mx-auto px-6 relative z-10">
-        <div className="flex flex-col lg:flex-row items-center justify-between gap-8">
-          {/* Left Content */}
+        <div className="flex flex-col lg:flex-row items-start justify-start gap-6">
+          {/* Text Section */}
           <m.div
             initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
+            animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
-            viewport={{ once: true }}
-            className="lg:w-1/2 space-y-6"
+            className="lg:w-2/3 space-y-6"
           >
             <div className="inline-flex items-center gap-2 bg-gradient-to-r from-purple-500/20 to-blue-500/20 border border-purple-500/30 rounded-full px-4 py-2 text-sm">
-              <FaRocket className="text-purple-400" />
+              <m.div
+                animate={{ x: [0, 5, 0], y: [0, -3, 0] }}
+                transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+              >
+                <FaRocket className="text-purple-400" />
+              </m.div>
               <span className="text-purple-300">Available for exciting projects</span>
             </div>
 
             <div className="space-y-3">
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight">
                 <span className="text-white">Hi, I'm </span>
-                <span className="bg-gradient-to-r from-purple-400 via-pink-400 to-blue-400 bg-clip-text text-transparent">
-                  Vishal
-                </span>
+                <span className="bg-gradient-to-r from-purple-400 via-pink-400 to-blue-400 bg-clip-text text-transparent">Vishal</span>
                 <br />
-                <span className="bg-gradient-to-r from-cyan-400 via-blue-400 to-purple-400 bg-clip-text text-transparent">
-                  Dwivedy
-                </span>
+                <span className="bg-gradient-to-r from-cyan-400 via-blue-400 to-purple-400 bg-clip-text text-transparent">Dwivedy</span>
               </h1>
 
               <div className="flex items-center gap-2">
@@ -77,13 +92,15 @@ const Hero = () => {
             </div>
 
             <p className="text-base md:text-lg text-gray-300 max-w-2xl leading-relaxed">
-              Crafting digital experiences that push boundaries and redefine possibilities. With a passion for cutting-edge technologies, I transform complex challenges into elegant, scalable solutions that make an impact.
+              Crafting digital experiences that push boundaries and redefine possibilities.
+              With a passion for cutting-edge technologies, I transform complex challenges
+              into elegant, scalable solutions that make an impact.
             </p>
 
             <div className="flex flex-wrap gap-3">
               <m.button
                 onClick={() => document.dispatchEvent(new CustomEvent('navigate', { detail: 'contact' }))}
-                className="bg-gradient-to-r from-purple-600 to-blue-600 text-white px-6 py-3 rounded-full font-semibold transition-all duration-200 hover:shadow-md hover:shadow-purple-500/30 hover:scale-[1.03]"
+                className="bg-gradient-to-r from-purple-600 to-blue-600 text-white px-6 py-3 rounded-full font-semibold transition-all duration-200 hover:shadow-md hover:shadow-purple-500/30 hover:scale-105"
               >
                 <span className="flex items-center gap-2">
                   <FaRocket />
@@ -95,7 +112,7 @@ const Hero = () => {
                 href="https://drive.google.com/file/d/11ExXm9qSkJ7yhzkW6H1oU3PAsXqBh9DU/view"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="border border-purple-500/50 text-white px-6 py-3 rounded-full font-semibold transition-all duration-200 hover:border-purple-400 hover:shadow-md hover:shadow-purple-500/20 hover:scale-[1.03]"
+                className="border border-purple-500/50 text-white px-6 py-3 rounded-full font-semibold transition-all duration-200 hover:border-purple-400 hover:shadow-md hover:shadow-purple-500/20 hover:scale-105"
               >
                 <span className="flex items-center gap-2">
                   <FaCode />
@@ -105,7 +122,7 @@ const Hero = () => {
 
               <button
                 onClick={toggleSpeech}
-                className={`w-12 h-12 border border-purple-500/50 rounded-full flex items-center justify-center text-purple-400 hover:border-purple-400 hover:text-purple-300 transition-all duration-200 hover:scale-[1.03] ${isSpeaking ? 'animate-pulse shadow-md shadow-purple-500/30' : ''}`}
+                className={`w-12 h-12 border border-purple-500/50 rounded-full flex items-center justify-center text-purple-400 hover:border-purple-400 hover:text-purple-300 transition-all duration-200 hover:scale-105 ${isSpeaking ? 'animate-pulse shadow-md shadow-purple-500/30' : ''}`}
               >
                 {isSpeaking ? <FaVolumeMute /> : <FaVolumeUp />}
               </button>
@@ -126,19 +143,20 @@ const Hero = () => {
             </div>
           </m.div>
 
-          {/* Right Card */}
+          {/* Tilt Card */}
           <m.div
             initial={{ opacity: 0, scale: 0.95 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            whileHover={{ rotateX: 5, rotateY: -5 }}
+            animate={{ opacity: 1, scale: 1 }}
+            whileHover={{ scale: 1.1 }}
+            style={{ rotateX, rotateY }}
+            onMouseMove={handleMouseMove}
+            onMouseLeave={handleMouseLeave}
             transition={{ duration: 0.6 }}
-            viewport={{ once: true }}
-            className="relative w-full max-w-md cursor-pointer"
+            className="relative w-80 h-96 cursor-pointer flex-shrink-0"
           >
-            <div className="relative aspect-square bg-gradient-to-br from-gray-800/50 to-gray-900/50 backdrop-blur-lg border border-white/10 rounded-2xl overflow-hidden shadow-xl">
-              {/* Simplified Grid Background */}
-              <div className="absolute inset-0 opacity-5 grid grid-cols-8 grid-rows-8">
-                {[...Array(8)].map((_, i) => (
+            <div className="relative w-full h-full bg-gradient-to-br from-gray-800/50 to-gray-900/50 backdrop-blur-lg border border-white/10 rounded-2xl overflow-hidden shadow-xl">
+              <div className="absolute inset-0 opacity-5 grid grid-cols-6 grid-rows-6">
+                {[...Array(6)].map((_, i) => (
                   <React.Fragment key={i}>
                     <div className="border-t border-purple-500/10" />
                     <div className="border-l border-purple-500/10" />
@@ -146,33 +164,26 @@ const Hero = () => {
                 ))}
               </div>
 
-              {/* Profile Section */}
+              {/* Bigger Profile Image with Glow */}
               <div className="absolute inset-0 flex flex-col items-center justify-center text-center z-10 p-4">
-                <div className="w-28 h-28 rounded-full bg-gradient-to-br from-purple-500 to-blue-500 flex items-center justify-center mb-4 shadow-lg overflow-hidden">
+                <div className="w-28 h-28 rounded-full bg-gradient-to-br from-purple-500 to-blue-500 p-1 shadow-lg shadow-purple-500/30 animate-glow">
                   <img
                     src="/profile.jpg"
                     alt="Vishal Dwivedy"
                     className="w-full h-full object-cover rounded-full"
+                    loading="lazy"
                   />
                 </div>
 
-                <h3 className="text-xl font-bold text-white mb-2">
-                  VISHAL DWIVEDY
-                </h3>
-
-                <p className="text-purple-300 font-medium text-sm">
-                  Software Engineer
-                </p>
-
-                <div className="h-0.5 bg-gradient-to-r from-purple-500 to-blue-500 rounded-full mt-3 w-3/5" />
+                <h3 className="text-lg font-bold text-white mt-3">VISHAL DWIVEDY</h3>
+                <p className="text-purple-300 font-medium text-sm">Software Engineer</p>
+                <div className="h-0.5 bg-gradient-to-r from-purple-500 to-blue-500 rounded-full mt-2 w-3/5" />
               </div>
 
-              {/* Corners */}
-              <div className="absolute top-3 right-3 w-6 h-6 border-t-2 border-r-2 border-purple-500/50 rounded-tr-lg"></div>
-              <div className="absolute bottom-3 left-3 w-6 h-6 border-b-2 border-l-2 border-blue-500/50 rounded-bl-lg"></div>
+              <div className="absolute top-3 right-3 w-5 h-5 border-t-2 border-r-2 border-purple-500/50 rounded-tr-lg"></div>
+              <div className="absolute bottom-3 left-3 w-5 h-5 border-b-2 border-l-2 border-blue-500/50 rounded-bl-lg"></div>
             </div>
           </m.div>
-
         </div>
       </div>
 
