@@ -1,43 +1,377 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" prefix="og: https://ogp.me/ns#">
   <head>
+    <!-- ===== ESSENTIAL META TAGS ===== -->
     <meta charset="utf-8" />
-    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#000000" />
-    <meta
-      name="description"
-      content="Web site created using create-react-app"
-    />
-    <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
-    <!--
-      manifest.json provides metadata used when your web app is installed on a
-      user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
-    -->
-    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
-    <!--
-      Notice the use of %PUBLIC_URL% in the tags above.
-      It will be replaced with the URL of the `public` folder during the build.
-      Only files inside the `public` folder can be referenced from the HTML.
-
-      Unlike "/favicon.ico" or "favicon.ico", "%PUBLIC_URL%/favicon.ico" will
-      work correctly both with client-side routing and a non-root public URL.
-      Learn how to configure a non-root public URL by running `npm run build`.
-    -->
-    <title>VishXDev Portfolio</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="theme-color" content="#8b5cf6" />
+    <meta name="color-scheme" content="dark light" />
+    
+    <!-- ===== FAVICON AND ICONS ===== -->
+    <link rel="icon" type="image/jpeg" href="profile.jpg" />
+    <link rel="apple-touch-icon" sizes="180x180" href="profile.jpg" />
+    <link rel="icon" type="image/png" sizes="32x32" href="profile.jpg" />
+    <link rel="icon" type="image/png" sizes="16x16" href="profile.jpg" />
+    <link rel="mask-icon" href="profile.jpg" color="#8b5cf6" />
+    <meta name="msapplication-TileColor" content="#8b5cf6" />
+    <meta name="msapplication-config" content="/browserconfig.xml" />
+    
+    <!-- ===== SEO META TAGS ===== -->
+    <title>VishXDev - Full Stack Developer & Creative Technologist | Premium Portfolio</title>
+    <meta name="description" content="Experienced Full Stack Developer specializing in React, Node.js, and modern web technologies. Creating exceptional digital experiences with cutting-edge design and robust functionality. Available for hire." />
+    <meta name="keywords" content="Full Stack Developer, React Developer, Node.js, JavaScript, TypeScript, Portfolio, Web Developer, Frontend, Backend, UI/UX, Software Engineer, Freelancer, VishXDev" />
+    <meta name="author" content="VishXDev" />
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+    <meta name="googlebot" content="index, follow" />
+    <link rel="canonical" href="https://vishxdev-portfolio.vercel.app/" />
+    
+    <!-- ===== OPEN GRAPH / FACEBOOK ===== -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="VishXDev - Full Stack Developer & Creative Technologist" />
+    <meta property="og:description" content="Premium portfolio showcasing cutting-edge web development projects. Specializing in React, Node.js, and modern JavaScript frameworks. Let's build something amazing together!" />
+    <meta property="og:image" content="https://vishxdev-portfolio.vercel.app/profile.jpg" />
+    <meta property="og:image:alt" content="VishXDev - Full Stack Developer Portfolio" />
+    <meta property="og:url" content="https://vishxdev-portfolio.vercel.app/" />
+    <meta property="og:site_name" content="VishXDev Portfolio" />
+    <meta property="og:locale" content="en_US" />
+    
+    <!-- ===== TWITTER CARD ===== -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="VishXDev - Full Stack Developer & Creative Technologist" />
+    <meta name="twitter:description" content="Premium portfolio showcasing cutting-edge web development projects. Available for freelance and full-time opportunities." />
+    <meta name="twitter:image" content="https://vishxdev-portfolio.vercel.app/profile.jpg" />
+    <meta name="twitter:image:alt" content="VishXDev Portfolio Preview" />
+    <meta name="twitter:creator" content="@VishXDev" />
+    <meta name="twitter:site" content="@VishXDev" />
+    
+    <!-- ===== LINKEDIN OPTIMIZATION ===== -->
+    <meta property="linkedin:owner" content="VishXDev" />
+    
+    <!-- ===== PWA MANIFEST ===== -->
+    <link rel="manifest" href="/manifest.json" />
+    <meta name="application-name" content="VishXDev Portfolio" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="apple-mobile-web-app-title" content="VishXDev" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    
+    <!-- ===== PERFORMANCE OPTIMIZATION ===== -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
+    <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com" />
+    
+    <!-- ===== CRITICAL CSS PRELOAD ===== -->
+    <link rel="preload" href="/static/css/main.css" as="style" />
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap" as="style" />
+    
+    <!-- ===== STRUCTURED DATA / JSON-LD ===== -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "VishXDev",
+      "jobTitle": "Full Stack Developer",
+      "description": "Experienced Full Stack Developer specializing in modern web technologies",
+      "url": "https://vishxdev-portfolio.vercel.app/",
+      "image": "https://vishxdev-portfolio.vercel.app/profile.jpg",
+      "sameAs": [
+        "https://github.com/vishxdev",
+        "https://linkedin.com/in/vishxdev",
+        "https://twitter.com/vishxdev"
+      ],
+      "knowsAbout": [
+        "JavaScript",
+        "TypeScript",
+        "React",
+        "Node.js",
+        "Full Stack Development",
+        "Frontend Development",
+        "Backend Development",
+        "UI/UX Design"
+      ],
+      "alumniOf": {
+        "@type": "Organization",
+        "name": "Your University/College"
+      },
+      "worksFor": {
+        "@type": "Organization",
+        "name": "Freelance"
+      }
+    }
+    </script>
+    
+    <!-- ===== WEBSITE STRUCTURED DATA ===== -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "VishXDev Portfolio",
+      "description": "Premium portfolio showcasing full stack development projects and expertise",
+      "url": "https://vishxdev-portfolio.vercel.app/",
+      "author": {
+        "@type": "Person",
+        "name": "VishXDev"
+      },
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": "https://vishxdev-portfolio.vercel.app/?q={search_term_string}",
+        "query-input": "required name=search_term_string"
+      }
+    }
+    </script>
+    
+    <!-- ===== BREADCRUMB STRUCTURED DATA ===== -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://vishxdev-portfolio.vercel.app/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Portfolio",
+          "item": "https://vishxdev-portfolio.vercel.app/#projects"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Contact",
+          "item": "https://vishxdev-portfolio.vercel.app/#contact"
+        }
+      ]
+    }
+    </script>
+    
+    <!-- ===== SECURITY HEADERS ===== -->
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://cdnjs.cloudflare.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self' https:;" />
+    <meta http-equiv="X-Content-Type-Options" content="nosniff" />
+    <meta http-equiv="X-Frame-Options" content="SAMEORIGIN" />
+    <meta http-equiv="X-XSS-Protection" content="1; mode=block" />
+    <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin" />
+    
+    <!-- ===== PERFORMANCE HINTS ===== -->
+    <meta http-equiv="Accept-CH" content="DPR, Viewport-Width, Width" />
+    <meta name="format-detection" content="telephone=no" />
+    
+    <!-- ===== ACCESSIBILITY ===== -->
+    <meta name="theme-color" media="(prefers-color-scheme: light)" content="#f8fafc" />
+    <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#0a0a0a" />
+    
+    <!-- ===== INLINE CRITICAL STYLES ===== -->
+    <style>
+      /* Critical above-the-fold styles */
+      html {
+        font-family: Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        line-height: 1.6;
+        -webkit-text-size-adjust: 100%;
+        scroll-behavior: smooth;
+      }
+      
+      body {
+        margin: 0;
+        padding: 0;
+        background: #0a0a0a;
+        color: #ffffff;
+        overflow-x: hidden;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+      }
+      
+      /* Loading animation */
+      #initial-loader {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 9999;
+        transition: opacity 0.5s ease-out, visibility 0.5s ease-out;
+      }
+      
+      .loader-content {
+        text-align: center;
+        color: white;
+      }
+      
+      .loader-spinner {
+        width: 50px;
+        height: 50px;
+        border: 3px solid rgba(255,255,255,0.3);
+        border-radius: 50%;
+        border-top-color: white;
+        animation: spin 1s ease-in-out infinite;
+        margin: 0 auto 20px;
+      }
+      
+      .loader-text {
+        font-size: 18px;
+        font-weight: 600;
+        opacity: 0.9;
+      }
+      
+      @keyframes spin {
+        to { transform: rotate(360deg); }
+      }
+      
+      /* Prevent flash of unstyled content */
+      #root {
+        opacity: 0;
+        transition: opacity 0.3s ease-in;
+      }
+      
+      #root.loaded {
+        opacity: 1;
+      }
+      
+      /* Preload optimization */
+      .preload-images {
+        position: absolute;
+        left: -9999px;
+        top: -9999px;
+        visibility: hidden;
+      }
+    </style>
   </head>
   <body>
-    <noscript>You need to enable JavaScript to run this app.</noscript>
-    <div id="root"></div>
-    <!--
-      This HTML file is a template.
-      If you open it directly in the browser, you will see an empty page.
-
-      You can add webfonts, meta tags, or analytics to this file.
-      The build step will place the bundled scripts into the <body> tag.
-
-      To begin the development, run `npm start` or `yarn start`.
-      To create a production bundle, use `npm run build` or `yarn build`.
-    -->
+    <!-- ===== LOADING SCREEN ===== -->
+    <div id="initial-loader">
+      <div class="loader-content">
+        <div class="loader-spinner"></div>
+        <div class="loader-text">Loading Premium Portfolio...</div>
+      </div>
+    </div>
+    
+    <!-- ===== SKIP TO CONTENT LINK ===== -->
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+    
+    <!-- ===== NO JAVASCRIPT MESSAGE ===== -->
+    <noscript>
+      <div style="
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 10000;
+        padding: 20px;
+        box-sizing: border-box;
+      ">
+        <div style="
+          text-align: center;
+          color: white;
+          max-width: 600px;
+          background: rgba(255, 255, 255, 0.1);
+          padding: 40px;
+          border-radius: 20px;
+          backdrop-filter: blur(10px);
+          border: 1px solid rgba(255, 255, 255, 0.2);
+        ">
+          <div style="font-size: 4rem; margin-bottom: 20px;">⚡</div>
+          <h1 style="font-size: 2rem; margin-bottom: 20px; font-weight: 600;">JavaScript Required</h1>
+          <p style="font-size: 1.2rem; line-height: 1.6; margin-bottom: 30px; opacity: 0.9;">
+            This premium portfolio requires JavaScript to showcase its full interactive experience. 
+            Please enable JavaScript in your browser to explore the amazing projects and features.
+          </p>
+          <div style="
+            padding: 15px 30px;
+            background: linear-gradient(45deg, #8b5cf6, #ec4899);
+            border-radius: 10px;
+            font-weight: 600;
+            display: inline-block;
+          ">
+            Enable JavaScript to Continue
+          </div>
+        </div>
+      </div>
+    </noscript>
+    
+    <!-- ===== MAIN APP CONTAINER ===== -->
+    <div id="root" role="main" aria-label="Portfolio Application"></div>
+    
+    <!-- ===== PRELOAD CRITICAL IMAGES ===== -->
+    <div class="preload-images" aria-hidden="true">
+      <img src="profile.jpg" alt="Profile preload" />
+    </div>
+    
+    <!-- ===== ANALYTICS PLACEHOLDER ===== -->
+    <!-- Add your analytics code here -->
+    <!-- Example: Google Analytics, Hotjar, etc. -->
+    
+    <!-- ===== SERVICE WORKER REGISTRATION ===== -->
+    <script>
+      // Service Worker for PWA functionality
+      if ('serviceWorker' in navigator && 'production' === 'production') {
+        window.addEventListener('load', function() {
+          navigator.serviceWorker.register('/sw.js')
+            .then(function(registration) {
+              console.log('🔧 SW registered successfully');
+            })
+            .catch(function(registrationError) {
+              console.log('❌ SW registration failed');
+            });
+        });
+      }
+      
+      // Remove loader and show app
+      window.addEventListener('load', function() {
+        setTimeout(function() {
+          const loader = document.getElementById('initial-loader');
+          const root = document.getElementById('root');
+          
+          if (loader) {
+            loader.style.opacity = '0';
+            loader.style.visibility = 'hidden';
+            setTimeout(() => loader.remove(), 500);
+          }
+          
+          if (root) {
+            root.classList.add('loaded');
+          }
+        }, 800); // Minimum loading time for smooth experience
+      });
+      
+      // Performance monitoring
+      window.addEventListener('load', function() {
+        if ('performance' in window) {
+          setTimeout(function() {
+            const perfData = performance.getEntriesByType('navigation')[0];
+            if (perfData) {
+              console.log('📊 Page Performance:', {
+                'Load Time': Math.round(perfData.loadEventEnd - perfData.fetchStart) + 'ms',
+                'DOM Ready': Math.round(perfData.domContentLoadedEventEnd - perfData.fetchStart) + 'ms',
+                'First Paint': Math.round(perfData.responseEnd - perfData.fetchStart) + 'ms'
+              });
+            }
+          }, 0);
+        }
+      });
+      
+      // Error tracking
+      window.addEventListener('error', function(e) {
+        console.error('💥 Global Error:', e.error);
+        // You can send this to your error tracking service
+      });
+      
+      // Unhandled promise rejections
+      window.addEventListener('unhandledrejection', function(e) {
+        console.error('💥 Unhandled Promise Rejection:', e.reason);
+      });
+    </script>
   </body>
 </html>
