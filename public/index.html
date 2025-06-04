@@ -1,148 +1,173 @@
 <!DOCTYPE html>
 <html lang="en" prefix="og: https://ogp.me/ns#">
 <head>
-    <!-- ===== ESSENTIAL META TAGS ===== -->
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="theme-color" content="#8b5cf6" />
-    <meta name="color-scheme" content="dark light" />
-    
-    <!-- ===== FAVICON AND ICONS ===== -->
-    <link rel="icon" type="image/jpeg" href="profile.jpg" />
-    <link rel="apple-touch-icon" sizes="180x180" href="profile.jpg" />
-    <link rel="icon" type="image/png" sizes="32x32" href="profile.jpg" />
-    <link rel="icon" type="image/png" sizes="16x16" href="profile.jpg" />
-    <link rel="mask-icon" href="profile.jpg" color="#8b5cf6" />
-    <meta name="msapplication-TileColor" content="#8b5cf6" />
-    
-    <!-- ===== SEO META TAGS ===== -->
-    <title>VishXDev - Full Stack Developer & Creative Technologist | Premium Portfolio</title>
-    <meta name="description" content="Experienced Full Stack Developer specializing in React, Node.js, and modern web technologies. Creating exceptional digital experiences with cutting-edge design and robust functionality." />
-    <meta name="keywords" content="Full Stack Developer, React Developer, Node.js, JavaScript, TypeScript, Portfolio, Web Developer" />
-    <meta name="author" content="VishXDev" />
-    <meta name="robots" content="index, follow" />
-    <link rel="canonical" href="https://vishxdev-portfolio.vercel.app/" />
-    
-    <!-- ===== SOCIAL META TAGS ===== -->
-    <meta property="og:type" content="website" />
-    <meta property="og:title" content="VishXDev - Full Stack Developer & Creative Technologist" />
-    <meta property="og:description" content="Premium portfolio showcasing cutting-edge web development projects." />
-    <meta property="og:image" content="https://vishxdev-portfolio.vercel.app/profile.jpg" />
-    <meta property="og:url" content="https://vishxdev-portfolio.vercel.app/" />
-    
-    <!-- ===== PERFORMANCE OPTIMIZATION ===== -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
-    
-    <!-- ===== CRITICAL CSS ===== -->
-    <style>
-      /* Base styles */
-      html {
-        scroll-behavior: smooth;
-        -webkit-text-size-adjust: 100%;
+  <!-- ===== ESSENTIAL META TAGS ===== -->
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="theme-color" content="#8b5cf6" />
+  <meta name="color-scheme" content="dark light" />
+
+  <!-- ===== FAVICON AND ICONS ===== -->
+  <link rel="icon" type="image/jpeg" href="profile.jpg" />
+  <link rel="apple-touch-icon" sizes="180x180" href="profile.jpg" />
+  <link rel="icon" type="image/png" sizes="32x32" href="profile.jpg" />
+  <link rel="icon" type="image/png" sizes="16x16" href="profile.jpg" />
+  <link rel="mask-icon" href="profile.jpg" color="#8b5cf6" />
+  <meta name="msapplication-TileColor" content="#8b5cf6" />
+
+  <!-- ===== SEO META TAGS ===== -->
+  <title>VishXDev - Full Stack Developer & Creative Technologist | Premium Portfolio</title>
+  <meta
+    name="description"
+    content="Experienced Full Stack Developer specializing in React, Node.js, and modern web technologies. Creating exceptional digital experiences with cutting-edge design and robust functionality."
+  />
+  <meta
+    name="keywords"
+    content="Full Stack Developer, React Developer, Node.js, JavaScript, TypeScript, Portfolio, Web Developer"
+  />
+  <meta name="author" content="VishXDev" />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://vishxdev-portfolio.vercel.app/" />
+
+  <!-- ===== SOCIAL META TAGS ===== -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="VishXDev - Full Stack Developer & Creative Technologist" />
+  <meta property="og:description" content="Premium portfolio showcasing cutting-edge web development projects." />
+  <meta property="og:image" content="https://vishxdev-portfolio.vercel.app/profile.jpg" />
+  <meta property="og:url" content="https://vishxdev-portfolio.vercel.app/" />
+
+  <!-- ===== PERFORMANCE OPTIMIZATION ===== -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
+
+  <!-- ===== CRITICAL CSS ===== -->
+  <style>
+    /* Base styles */
+    html {
+      scroll-behavior: smooth;
+      -webkit-text-size-adjust: 100%;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      background: #0a0a0a;
+      color: #ffffff;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    }
+
+    /* Animation performance optimizations */
+    .animatable {
+      will-change: transform, opacity;
+      backface-visibility: hidden;
+    }
+
+    /* Reduced motion preference */
+    @media (prefers-reduced-motion: reduce) {
+      * {
+        animation: none !important;
+        transition: none !important;
+        scroll-behavior: auto !important;
       }
-      
-      body {
-        margin: 0;
-        padding: 0;
-        background: #0a0a0a;
-        color: #ffffff;
-        overflow-x: hidden;
-        -webkit-font-smoothing: antialiased;
-        -moz-osx-font-smoothing: grayscale;
-        font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    }
+
+    /* Loading animation */
+    #initial-loader {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: #0a0a0a;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 9999;
+      transition: opacity 0.3s ease-out;
+      aria-live: assertive; /* Alert screen readers */
+    }
+
+    .loader-spinner {
+      width: 40px;
+      height: 40px;
+      border: 3px solid rgba(139, 92, 246, 0.3);
+      border-radius: 50%;
+      border-top-color: #8b5cf6;
+      animation: spin 1s linear infinite;
+    }
+
+    @keyframes spin {
+      to {
+        transform: rotate(360deg);
       }
-      
-      /* Animation performance optimizations */
-      .animatable {
-        will-change: transform, opacity;
-        backface-visibility: hidden;
-      }
-      
-      /* Reduced motion preference */
-      @media (prefers-reduced-motion: reduce) {
-        * {
-          animation: none !important;
-          transition: none !important;
-          scroll-behavior: auto !important;
-        }
-      }
-      
-      /* Loading animation */
-      #initial-loader {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: #0a0a0a;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        z-index: 9999;
-        transition: opacity 0.3s ease-out;
-      }
-      
-      .loader-spinner {
-        width: 40px;
-        height: 40px;
-        border: 3px solid rgba(139, 92, 246, 0.3);
-        border-radius: 50%;
-        border-top-color: #8b5cf6;
-        animation: spin 1s linear infinite;
-      }
-      
-      @keyframes spin {
-        to { transform: rotate(360deg); }
-      }
-      
-      /* Root element transition */
-      #root {
-        opacity: 0;
-        transition: opacity 0.2s ease-in;
-      }
-      
-      #root.loaded {
-        opacity: 1;
-      }
-      
-      /* Skip link */
-      .skip-link {
-        position: absolute;
-        top: -40px;
-        left: 0;
-        background: #8b5cf6;
-        color: white;
-        padding: 8px;
-        z-index: 100;
-        transition: top 0.3s;
-      }
-      
-      .skip-link:focus {
-        top: 0;
-      }
-    </style>
-    
-    <!-- ===== DEFER NON-CRITICAL CSS ===== -->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" media="print" onload="this.media='all'" />
-    <noscript>
-      <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" />
-    </noscript>
+    }
+
+    /* Root element transition */
+    #root {
+      opacity: 0;
+      transition: opacity 0.2s ease-in;
+    }
+
+    #root.loaded {
+      opacity: 1;
+    }
+
+    /* Skip link */
+    .skip-link {
+      position: absolute;
+      top: -40px;
+      left: 0;
+      background: #8b5cf6;
+      color: white;
+      padding: 8px 16px;
+      z-index: 100;
+      font-weight: 600;
+      border-radius: 0 0 4px 0;
+      transition: top 0.3s ease-in-out;
+      text-decoration: none;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+    }
+
+    .skip-link:focus,
+    .skip-link:hover {
+      top: 0;
+      outline: none;
+    }
+  </style>
+
+  <!-- ===== DEFER NON-CRITICAL CSS ===== -->
+  <link
+    rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap"
+    media="print"
+    onload="this.media='all'"
+  />
+  <noscript>
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap"
+    />
+  </noscript>
 </head>
+
 <body>
-    <!-- ===== LOADING SCREEN ===== -->
-    <div id="initial-loader" aria-label="Loading content">
-      <div class="loader-spinner" aria-hidden="true"></div>
-    </div>
-    
-    <!-- ===== ACCESSIBILITY SKIP LINK ===== -->
-    <a href="#main-content" class="skip-link">Skip to content</a>
-    
-    <!-- ===== NO JAVASCRIPT FALLBACK ===== -->
-    <noscript>
-      <div style="
+  <!-- ===== LOADING SCREEN ===== -->
+  <div id="initial-loader" aria-label="Loading content" aria-live="assertive" role="alert" aria-busy="true">
+    <div class="loader-spinner" aria-hidden="true"></div>
+  </div>
+
+  <!-- ===== ACCESSIBILITY SKIP LINK ===== -->
+  <a href="#main-content" class="skip-link">Skip to content</a>
+
+  <!-- ===== NO JAVASCRIPT FALLBACK ===== -->
+  <noscript>
+    <div
+      style="
         position: fixed;
         top: 0;
         left: 0;
@@ -155,53 +180,56 @@
         z-index: 10000;
         padding: 20px;
         text-align: center;
-      ">
-        <div style="max-width: 600px;">
-          <h1 style="font-size: 1.5rem; margin-bottom: 1rem;">JavaScript Required</h1>
-          <p style="margin-bottom: 1.5rem;">
-            For the best experience, please enable JavaScript in your browser.
-          </p>
-        </div>
+      "
+    >
+      <div style="max-width: 600px;">
+        <h1 style="font-size: 1.5rem; margin-bottom: 1rem;">JavaScript Required</h1>
+        <p style="margin-bottom: 1.5rem;">
+          For the best experience, please enable JavaScript in your browser.
+        </p>
       </div>
-    </noscript>
-    
-    <!-- ===== MAIN APP CONTAINER ===== -->
-    <div id="root" role="main"></div>
-    
-    <!-- ===== OPTIMIZED SCRIPTS ===== -->
-    <script>
-      // Performance optimized loader removal
-      function removeLoader() {
-        const loader = document.getElementById('initial-loader');
-        const root = document.getElementById('root');
-        
-        if (loader) {
-          loader.style.opacity = '0';
-          setTimeout(() => {
-            loader.style.display = 'none';
-            if (root) root.classList.add('loaded');
-          }, 300);
-        }
+    </div>
+  </noscript>
+
+  <!-- ===== MAIN APP CONTAINER ===== -->
+  <div id="root" role="main" tabindex="-1"></div>
+
+  <!-- ===== OPTIMIZED SCRIPTS ===== -->
+  <script>
+    // Performance optimized loader removal
+    function removeLoader() {
+      const loader = document.getElementById('initial-loader');
+      const root = document.getElementById('root');
+
+      if (loader) {
+        loader.style.opacity = '0';
+        loader.setAttribute('aria-busy', 'false');
+        setTimeout(() => {
+          loader.style.display = 'none';
+          if (root) root.classList.add('loaded');
+          // Move focus to main content after loader removal for accessibility
+          if (root) root.focus();
+        }, 300);
       }
-      
-      // Load main content faster
-      if (document.readyState === 'complete') {
-        removeLoader();
-      } else {
-        window.addEventListener('load', () => {
-          // Minimum display time for smooth UX
-          setTimeout(removeLoader, 500);
-        });
-      }
-      
-      // Error handling
-      window.addEventListener('error', (e) => {
-        console.error('Error:', e.error);
+    }
+
+    // Remove loader once page is fully loaded, with a slight delay for smooth UX
+    if (document.readyState === 'complete') {
+      removeLoader();
+    } else {
+      window.addEventListener('load', () => {
+        setTimeout(removeLoader, 500);
       });
-      
-      window.addEventListener('unhandledrejection', (e) => {
-        console.error('Unhandled rejection:', e.reason);
-      });
-    </script>
+    }
+
+    // Global error logging
+    window.addEventListener('error', (e) => {
+      console.error('Error:', e.error);
+    });
+
+    window.addEventListener('unhandledrejection', (e) => {
+      console.error('Unhandled rejection:', e.reason);
+    });
+  </script>
 </body>
 </html>

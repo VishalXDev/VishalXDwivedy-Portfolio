@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { 
-  FaCode, FaDatabase, FaCloud, FaNetworkWired, 
-  FaShieldAlt, FaRobot, FaTools, FaReact, 
-  FaNodeJs, FaPython, FaDocker, FaAws 
+import {
+  FaCode, FaDatabase, FaCloud, FaNetworkWired,
+  FaShieldAlt, FaRobot, FaTools, FaReact,
+  FaNodeJs, FaPython, FaDocker, FaAws
 } from 'react-icons/fa';
-import { 
-  SiTypescript, SiMongodb, SiRedis, SiGraphql, 
-  SiTensorflow, SiNextdotjs, SiVuedotjs 
+import {
+  SiTypescript, SiMongodb, SiRedis, SiGraphql,
+  SiTensorflow, SiNextdotjs, SiVuedotjs
 } from 'react-icons/si';
 
 const Skills = () => {
@@ -91,9 +91,9 @@ const Skills = () => {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
-      transition: { 
+      transition: {
         staggerChildren: 0.1,
-        delayChildren: 0.1
+        delayChildren: 0.1,
       }
     }
   };
@@ -103,23 +103,23 @@ const Skills = () => {
     visible: {
       opacity: 1,
       y: 0,
-      transition: { 
+      transition: {
         type: "spring",
         stiffness: 100,
-        damping: 15
+        damping: 15,
       }
     }
   };
 
   const skillVariants = {
     hidden: { opacity: 0, scale: 0.8 },
-    visible: { 
-      opacity: 1, 
+    visible: {
+      opacity: 1,
       scale: 1,
-      transition: { 
+      transition: {
         type: "spring",
         stiffness: 150,
-        damping: 10
+        damping: 10,
       }
     }
   };
@@ -127,16 +127,15 @@ const Skills = () => {
   const getSkillIcon = (skill, category) => {
     if (category.specialIcons && category.specialIcons[skill]) {
       const IconComponent = category.specialIcons[skill];
-      return <IconComponent className="w-3 h-3 mr-1" />;
+      return <IconComponent className="w-4 h-4 mr-1 inline-block" />;
     }
     return null;
   };
 
   return (
     <section id="skills" className="relative min-h-screen py-20 overflow-hidden">
-      {/* Simplified Background */}
+      {/* Background */}
       <div className="absolute inset-0 bg-gradient-to-br from-slate-900 via-purple-900/30 to-slate-800">
-        {/* Static Grid Pattern */}
         <div className="absolute inset-0 opacity-10" style={{
           backgroundImage: `
             linear-gradient(rgba(64, 224, 208, 0.1) 1px, transparent 1px),
@@ -144,8 +143,6 @@ const Skills = () => {
           `,
           backgroundSize: '50px 50px'
         }} />
-
-        {/* Reduced Floating Tech Symbols (from 15 to 7) */}
         {[...Array(7)].map((_, i) => (
           <motion.div
             key={i}
@@ -171,7 +168,7 @@ const Skills = () => {
       </div>
 
       <div className="container mx-auto px-4 relative z-10">
-        {/* Simplified Title Animation */}
+        {/* Title */}
         <motion.div
           initial={{ opacity: 0, y: -30 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -218,7 +215,6 @@ const Skills = () => {
                 onHoverStart={() => setHoveredCategory(index)}
                 onHoverEnd={() => setHoveredCategory(null)}
               >
-                {/* Card Container */}
                 <motion.div
                   className="relative h-full bg-gradient-to-br from-slate-800/60 via-slate-900/60 to-black/60 backdrop-blur-lg rounded-2xl border border-slate-700/50 p-5 overflow-hidden"
                   whileHover={{
@@ -228,20 +224,18 @@ const Skills = () => {
                   transition={{ type: "spring", stiffness: 300, damping: 20 }}
                 >
                   {/* Category Header */}
-                  <div className="relative z-10 mb-5">
-                    <div className="flex items-center gap-3 mb-3">
-                      <div className={`p-3 rounded-xl bg-gradient-to-br ${category.color} shadow-md`}>
-                        <IconComponent className="text-white text-lg" />
-                      </div>
-                      
-                      <h3 className="text-lg font-bold text-transparent bg-clip-text bg-gradient-to-r from-white to-gray-300">
-                        {category.title}
-                      </h3>
+                  <div className="relative z-10 mb-5 flex items-center gap-3">
+                    <div className={`p-3 rounded-xl bg-gradient-to-br ${category.color} shadow-md`}>
+                      <IconComponent className="text-white text-lg" />
                     </div>
+
+                    <h3 className="text-lg font-bold text-transparent bg-clip-text bg-gradient-to-r from-white to-gray-300">
+                      {category.title}
+                    </h3>
                   </div>
 
                   {/* Skills Tags */}
-                  <motion.div 
+                  <motion.div
                     className="flex flex-wrap gap-2 relative z-10"
                     variants={containerVariants}
                   >
@@ -249,20 +243,20 @@ const Skills = () => {
                       <motion.div
                         key={skillIndex}
                         variants={skillVariants}
-                        whileHover={{ 
+                        whileHover={{
                           scale: 1.05,
                           y: -2,
                         }}
                         className="group/skill"
                       >
-                        <span className={`
+                        <span className="
                           inline-flex items-center px-3 py-1.5 rounded-full text-xs font-medium
-                          bg-gradient-to-r from-slate-700/80 to-slate-800/80 
+                          bg-gradient-to-r from-slate-700/80 to-slate-800/80
                           border border-slate-600/50 text-gray-300
                           hover:border-cyan-400/50 hover:text-white
                           transition-all duration-200 cursor-pointer
                           backdrop-blur-sm
-                        `}>
+                        ">
                           {getSkillIcon(skill, category)}
                           {skill}
                         </span>
@@ -299,7 +293,7 @@ const Skills = () => {
               <motion.div
                 key={index}
                 className="bg-gradient-to-br from-slate-800/40 to-slate-900/40 backdrop-blur-lg rounded-xl p-5 border border-slate-700/50"
-                whileHover={{ 
+                whileHover={{
                   scale: 1.03,
                 }}
                 initial={{ opacity: 0, y: 20 }}

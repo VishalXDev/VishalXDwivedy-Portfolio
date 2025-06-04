@@ -1,62 +1,62 @@
-import React, { useState, useEffect, useCallback, useMemo } from "react";
+import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { FaLinkedin, FaGithub, FaPhone, FaEnvelope, FaCode, FaCloud, FaRocket } from "react-icons/fa";
 
+const floatingIcons = [
+  { icon: FaCode, delay: 0, x: 20, y: 30 },
+  { icon: FaCloud, delay: 0.5, x: 80, y: 20 },
+  { icon: FaRocket, delay: 1, x: 60, y: 70 },
+];
+
+const contactLinks = [
+  { icon: FaPhone, text: "7004212369", href: "tel:7004212369", color: "text-green-400" },
+  { icon: FaEnvelope, text: "Vishaldwidy@gmail.com", href: "mailto:Vishaldwidy@gmail.com", color: "text-red-400" },
+  { icon: FaLinkedin, text: "LinkedIn Profile", href: "https://www.linkedin.com/in/vishal-dwivedy", color: "text-blue-400" },
+  { icon: FaGithub, text: "GitHub Profile", href: "https://github.com/VishalXDev", color: "text-purple-400" }
+];
+
+const skillsData = [
+  { skill: "Full-Stack Development", level: 90 },
+  { skill: "Cloud & DevOps", level: 85 },
+  { skill: "Problem Solving", level: 95 }
+];
+
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.15,
+      delayChildren: 0.2
+    }
+  }
+};
+
+const itemVariants = {
+  hidden: { opacity: 0, y: 20, scale: 0.95 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    scale: 1,
+    transition: {
+      type: "spring",
+      stiffness: 120,
+      damping: 15
+    }
+  }
+};
+
+const glowVariants = {
+  initial: { boxShadow: "0 0 20px rgba(64, 224, 208, 0.2)" },
+  hover: {
+    boxShadow: "0 0 30px rgba(64, 224, 208, 0.4)",
+    scale: 1.02,
+    transition: { duration: 0.2 }
+  }
+};
+
 const About = () => {
   const [isHovered, setIsHovered] = useState(false);
-
-  const floatingIcons = useMemo(() => [
-    { icon: FaCode, delay: 0, x: 20, y: 30 },
-    { icon: FaCloud, delay: 0.5, x: 80, y: 20 },
-    { icon: FaRocket, delay: 1, x: 60, y: 70 },
-  ], []);
-
-  const contactLinks = useMemo(() => [
-    { icon: FaPhone, text: "7004212369", href: "tel:7004212369", color: "text-green-400" },
-    { icon: FaEnvelope, text: "Vishaldwidy@gmail.com", href: "mailto:Vishaldwidy@gmail.com", color: "text-red-400" },
-    { icon: FaLinkedin, text: "LinkedIn Profile", href: "https://www.linkedin.com/in/vishal-dwivedy", color: "text-blue-400" },
-    { icon: FaGithub, text: "GitHub Profile", href: "https://github.com/VishalXDev", color: "text-purple-400" }
-  ], []);
-
-  const skillsData = useMemo(() => [
-    { skill: "Full-Stack Development", level: 90 },
-    { skill: "Cloud & DevOps", level: 85 },
-    { skill: "Problem Solving", level: 95 }
-  ], []);
-
-  const containerVariants = useMemo(() => ({
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.15,
-        delayChildren: 0.2
-      }
-    }
-  }), []);
-
-  const itemVariants = useMemo(() => ({
-    hidden: { opacity: 0, y: 20, scale: 0.95 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      scale: 1,
-      transition: {
-        type: "spring",
-        stiffness: 120,
-        damping: 15
-      }
-    }
-  }), []);
-
-  const glowVariants = useMemo(() => ({
-    initial: { boxShadow: "0 0 20px rgba(64, 224, 208, 0.2)" },
-    hover: {
-      boxShadow: "0 0 30px rgba(64, 224, 208, 0.4)",
-      scale: 1.02,
-      transition: { duration: 0.2 }
-    }
-  }), []);
 
   return (
     <section id="about" className="relative min-h-screen pt-20 pb-20 overflow-hidden">
@@ -153,6 +153,7 @@ const About = () => {
                       >
                         <a
                           href={href}
+                          aria-label={`Link to ${text}`}
                           target={href.startsWith("http") ? "_blank" : undefined}
                           rel={href.startsWith("http") ? "noopener noreferrer" : undefined}
                           className="flex items-center gap-4 p-3 rounded-xl bg-slate-800/30 border border-transparent group-hover:border-cyan-500/50 group-hover:bg-slate-700/50 transition-all duration-200"

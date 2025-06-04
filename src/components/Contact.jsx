@@ -1,6 +1,11 @@
-import React, { useState, useMemo, useCallback } from 'react';
+import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { FaEnvelope, FaPhoneAlt, FaLinkedin, FaGithub, FaPaperPlane, FaCheckCircle, FaSpinner } from 'react-icons/fa';
+import {
+  FaEnvelope, FaPhoneAlt, FaLinkedin, FaGithub,
+  FaPaperPlane, FaCheckCircle, FaSpinner
+} from 'react-icons/fa';
+
+const FORMSPREE_ENDPOINT = 'https://formspree.io/f/mpwrwryn';
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -9,14 +14,15 @@ const Contact = () => {
     subject: '',
     message: '',
   });
+
   const [formStatus, setFormStatus] = useState({
     isSubmitting: false,
     isSubmitted: false,
     error: null
   });
+
   const [focusedField, setFocusedField] = useState(null);
 
-  // Static contact info (no need for useMemo with static data)
   const contactInfo = [
     {
       icon: <FaPhoneAlt className="text-white text-base" />,
@@ -48,32 +54,6 @@ const Contact = () => {
     },
   ];
 
-  // Simplified animation variants (reduced complexity)
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.1,
-        delayChildren: 0.2
-      }
-    }
-  };
-
-  const itemVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: {
-        duration: 0.4,
-        ease: "easeOut"
-      }
-    }
-  };
-
-  const formFields = ['name', 'email', 'subject']; // Static array doesn't need useMemo
-
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData(prev => ({ ...prev, [name]: value }));
@@ -82,81 +62,52 @@ const Contact = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setFormStatus({ isSubmitting: true, isSubmitted: false, error: null });
-    
+
     try {
-      // Simulate API call
-      await new Promise(resolve => setTimeout(resolve, 1000));
-      
-      setFormStatus({
-        isSubmitting: false,
-        isSubmitted: true,
-        error: null
+      const response = await fetch(FORMSPREE_ENDPOINT, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData),
       });
-      
-      setFormData({
-        name: '',
-        email: '',
-        subject: '',
-        message: '',
-      });
-    } catch (error) {
-      setFormStatus({
-        isSubmitting: false,
-        isSubmitted: false,
-        error: 'Failed to send message. Please try again.'
-      });
+
+      if (response.ok) {
+        setFormStatus({ isSubmitting: false, isSubmitted: true, error: null });
+        setFormData({ name: '', email: '', subject: '', message: '' });
+      } else {
+        throw new Error('Something went wrong.');
+      }
+    } catch (err) {
+      setFormStatus({ isSubmitting: false, isSubmitted: false, error: err.message });
     }
   };
 
   const handleFocus = (field) => setFocusedField(field);
   const handleBlur = () => setFocusedField(null);
-  const resetForm = () => setFormStatus(prev => ({...prev, isSubmitted: false}));
-
-  // Simplified floating elements (reduced quantity and complexity)
-  const floatingElements = (
-    <>
-      <div className="absolute w-1.5 h-1.5 bg-purple-400/20 rounded-full animate-float-slow" />
-      <div className="absolute w-1.5 h-1.5 bg-pink-400/20 rounded-full animate-float-medium" />
-    </>
-  );
+  const resetForm = () => setFormStatus(prev => ({ ...prev, isSubmitted: false }));
 
   return (
     <section id="contact" className="relative pt-16 pb-16 bg-slate-900 overflow-hidden">
-      {/* Optimized background */}
-      <div className="absolute inset-0 bg-gradient-to-br from-purple-900/10 to-blue-900/10">
-        {floatingElements}
-      </div>
+      <div className="absolute inset-0 bg-gradient-to-br from-purple-900/10 to-blue-900/10" />
 
       <div className="relative z-10 container mx-auto px-5 lg:px-8">
         <motion.div
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-100px" }}
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          viewport={{ once: true }}
           className="text-center mb-12"
         >
-          <motion.div variants={itemVariants}>
-            <h2 className="text-4xl lg:text-5xl font-bold bg-gradient-to-r from-purple-400 via-pink-400 to-blue-400 bg-clip-text text-transparent mb-4">
-              Let's Connect
-            </h2>
-            <p className="text-lg text-slate-300 max-w-2xl mx-auto leading-relaxed">
-              Ready to collaborate? Reach out and let's build something amazing together.
-            </p>
-          </motion.div>
+          <h2 className="text-4xl lg:text-5xl font-bold bg-gradient-to-r from-purple-400 via-pink-400 to-blue-400 bg-clip-text text-transparent mb-4">
+            Let's Connect
+          </h2>
+          <p className="text-lg text-slate-300 max-w-2xl mx-auto leading-relaxed">
+            Ready to collaborate? Reach out and let's build something amazing together.
+          </p>
         </motion.div>
 
-        <motion.div
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-          className="grid grid-cols-1 xl:grid-cols-2 gap-10 lg:gap-12"
-        >
-          {/* Contact Form */}
-          <motion.div
-            variants={itemVariants}
-            className="relative bg-slate-800/50 backdrop-blur-sm border border-slate-700/50 rounded-2xl p-6 lg:p-8 shadow-xl"
-          >
+        <div className="grid grid-cols-1 xl:grid-cols-2 gap-10 lg:gap-12">
+          {/* Form Card */}
+          <div className="bg-slate-800/50 backdrop-blur-sm border border-slate-700/50 rounded-2xl p-6 lg:p-8 shadow-xl">
             <div className="flex items-center gap-3 mb-6">
               <div className="w-10 h-10 bg-gradient-to-r from-purple-500 to-pink-500 rounded-xl flex items-center justify-center">
                 <FaPaperPlane className="text-white text-lg" />
@@ -177,10 +128,7 @@ const Contact = () => {
                     <FaCheckCircle className="text-2xl text-white" />
                   </div>
                   <h4 className="text-xl font-bold text-white mb-3">Message Sent!</h4>
-                  <button 
-                    onClick={resetForm}
-                    className="bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 text-white font-semibold px-6 py-2 rounded-xl transition-all duration-200 text-sm"
-                  >
+                  <button onClick={resetForm} className="bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 text-white font-semibold px-6 py-2 rounded-xl transition-all duration-200 text-sm">
                     Send Another
                   </button>
                 </motion.div>
@@ -193,8 +141,8 @@ const Contact = () => {
                   onSubmit={handleSubmit}
                   className="space-y-6"
                 >
-                  {formFields.map((field) => (
-                    <div key={field} className="relative group">
+                  {['name', 'email', 'subject'].map(field => (
+                    <div key={field}>
                       <label className="block text-slate-300 font-medium mb-2 text-sm capitalize">
                         {field === 'email' ? 'Your Email' : `Your ${field}`}
                       </label>
@@ -205,18 +153,17 @@ const Contact = () => {
                         onChange={handleChange}
                         onFocus={() => handleFocus(field)}
                         onBlur={handleBlur}
-                        className={`w-full bg-slate-700/50 text-white border rounded-xl px-4 py-3 text-sm transition-all duration-200 focus:outline-none ${
-                          focusedField === field
-                            ? 'border-purple-400 shadow-purple-400/20 bg-slate-700/70'
-                            : 'border-slate-600 hover:border-slate-500'
-                        }`}
                         required
                         disabled={formStatus.isSubmitting}
+                        className={`w-full bg-slate-700/50 text-white border rounded-xl px-4 py-3 text-sm transition-all duration-200 focus:outline-none ${focusedField === field
+                            ? 'border-purple-400 shadow-purple-400/20 bg-slate-700/70'
+                            : 'border-slate-600 hover:border-slate-500'
+                          }`}
                       />
                     </div>
                   ))}
 
-                  <div className="relative group">
+                  <div>
                     <label className="block text-slate-300 font-medium mb-2 text-sm">Your Message</label>
                     <textarea
                       name="message"
@@ -225,13 +172,12 @@ const Contact = () => {
                       onFocus={() => handleFocus('message')}
                       onBlur={handleBlur}
                       rows="4"
-                      className={`w-full bg-slate-700/50 text-white border rounded-xl px-4 py-3 text-sm transition-all duration-200 focus:outline-none resize-none ${
-                        focusedField === 'message'
-                          ? 'border-purple-400 shadow-purple-400/20 bg-slate-700/70'
-                          : 'border-slate-600 hover:border-slate-500'
-                      }`}
                       required
                       disabled={formStatus.isSubmitting}
+                      className={`w-full bg-slate-700/50 text-white border rounded-xl px-4 py-3 text-sm transition-all duration-200 focus:outline-none resize-none ${focusedField === 'message'
+                          ? 'border-purple-400 shadow-purple-400/20 bg-slate-700/70'
+                          : 'border-slate-600 hover:border-slate-500'
+                        }`}
                     />
                   </div>
 
@@ -243,8 +189,8 @@ const Contact = () => {
 
                   <button
                     type="submit"
-                    className="w-full bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 text-white font-semibold py-3 px-6 rounded-xl transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed text-sm"
                     disabled={formStatus.isSubmitting}
+                    className="w-full bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 text-white font-semibold py-3 px-6 rounded-xl transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed text-sm"
                   >
                     {formStatus.isSubmitting ? (
                       <span className="flex items-center justify-center gap-2">
@@ -261,72 +207,28 @@ const Contact = () => {
                 </motion.form>
               )}
             </AnimatePresence>
-          </motion.div>
+          </div>
 
           {/* Contact Info */}
-          <motion.div
-            variants={itemVariants}
-            className="space-y-6"
-          >
-            <div className="grid gap-4">
-              {contactInfo.map((info) => (
-                <div 
-                  key={info.title} 
-                  className="group relative bg-slate-800/50 border border-slate-700/50 rounded-xl p-4 transition-colors duration-200 hover:border-slate-600/50"
-                >
-                  <div className="flex items-center gap-3">
-                    <div className={`w-10 h-10 bg-gradient-to-r ${info.color} rounded-xl flex items-center justify-center shadow-md`}>
-                      {info.icon}
-                    </div>
-                    <div className="flex-1">
-                      <h4 className="text-white font-bold text-base mb-1">{info.title}</h4>
-                      <a
-                        href={info.link}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="text-slate-300 hover:text-white transition-colors duration-200 text-sm"
-                      >
-                        {info.value}
-                      </a>
-                    </div>
+          <div className="space-y-6">
+            {contactInfo.map(info => (
+              <div key={info.title} className="group bg-slate-800/50 border border-slate-700/50 rounded-xl p-4 transition-colors duration-200 hover:border-slate-600/50">
+                <div className="flex items-center gap-3">
+                  <div className={`w-10 h-10 bg-gradient-to-r ${info.color} rounded-xl flex items-center justify-center shadow-md`}>
+                    {info.icon}
+                  </div>
+                  <div className="flex-1">
+                    <h4 className="text-white font-bold text-base mb-1">{info.title}</h4>
+                    <a href={info.link} target="_blank" rel="noopener noreferrer" className="text-slate-300 hover:text-white transition-colors duration-200 text-sm">
+                      {info.value}
+                    </a>
                   </div>
                 </div>
-              ))}
-            </div>
-
-            <div className="bg-slate-800/50 border border-slate-700/50 rounded-2xl p-6">
-              <h3 className="text-xl lg:text-2xl font-bold bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent mb-3">
-                Let's Work Together
-              </h3>
-              <p className="text-slate-300 text-sm leading-relaxed">
-                I'm always excited to connect with fellow creators and discuss new opportunities.
-              </p>
-            </div>
-          </motion.div>
-        </motion.div>
+              </div>
+            ))}
+          </div>
+        </div>
       </div>
-
-      {/* Add to your global CSS */}
-      <style jsx global>{`
-        @keyframes float-slow {
-          0%, 100% { transform: translate(0, 0); }
-          50% { transform: translate(10px, 10px); }
-        }
-        @keyframes float-medium {
-          0%, 100% { transform: translate(0, 0); }
-          50% { transform: translate(-10px, 15px); }
-        }
-        .animate-float-slow {
-          animation: float-slow 10s ease-in-out infinite;
-          top: 20%;
-          left: 15%;
-        }
-        .animate-float-medium {
-          animation: float-medium 8s ease-in-out infinite;
-          top: 70%;
-          left: 80%;
-        }
-      `}</style>
     </section>
   );
 };

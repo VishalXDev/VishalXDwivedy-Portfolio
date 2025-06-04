@@ -54,53 +54,50 @@ const Footer = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
-  // Simplified animation variants
+  // Animation variants for container and items
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.05, // Reduced stagger time
-        delayChildren: 0.1 // Reduced initial delay
+        staggerChildren: 0.05,
+        delayChildren: 0.1
       }
     }
   };
 
   const itemVariants = {
-    hidden: { opacity: 0, y: 20 }, // Reduced initial y offset
+    hidden: { opacity: 0, y: 20 },
     visible: {
       opacity: 1,
       y: 0,
       transition: {
         type: "spring",
-        stiffness: 120, // Slightly stiffer spring
-        damping: 15, // Less damping for quicker animation
-        mass: 0.5 // Lighter mass
+        stiffness: 120,
+        damping: 15,
+        mass: 0.5
       }
     }
   };
 
   return (
     <footer className="relative bg-gradient-to-br from-gray-900 via-purple-900/20 to-blue-900/30 text-white overflow-hidden">
-      {/* Simplified Background Elements */}
+      {/* Background floating elements */}
       <div className="absolute inset-0 overflow-hidden">
-        {/* Reduced to 2 background elements instead of 15+ */}
         <motion.div
           animate={{
             scale: [1, 1.1, 1],
             rotate: [0, 180],
           }}
           transition={{
-            duration: 20, // Slower animation
+            duration: 20,
             repeat: Infinity,
             ease: "linear"
           }}
-          className="absolute -top-20 -right-20 w-40 h-40 bg-gradient-to-br from-purple-500/10 to-pink-500/10 rounded-full blur-xl" // Reduced blur
+          className="absolute -top-20 -right-20 w-40 h-40 bg-gradient-to-br from-purple-500/10 to-pink-500/10 rounded-full blur-xl"
         />
-        
-        {/* Only show floating elements on hover/focus */}
         <div className="group">
-          {[...Array(5)].map((_, i) => ( // Reduced from 15 to 5
+          {[...Array(5)].map((_, i) => (
             <motion.div
               key={i}
               className="absolute text-xs text-purple-300/20 font-mono pointer-events-none"
@@ -113,12 +110,12 @@ const Footer = () => {
                 opacity: [0.1, 0.2, 0.1],
               }}
               transition={{
-                duration: Math.random() * 10 + 10, // Slower movement
+                duration: Math.random() * 10 + 10,
                 repeat: Infinity,
                 delay: Math.random() * 5,
               }}
             >
-              {['{ }', '< />', '=> '][Math.floor(Math.random() * 3)]} // Reduced variations
+              {['{ }', '< />', '=> '][Math.floor(Math.random() * 3)]}
             </motion.div>
           ))}
         </div>
@@ -129,41 +126,36 @@ const Footer = () => {
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true, margin: "0px 0px -100px 0px" }} // Trigger animation earlier
-          className="container mx-auto px-6 py-12" // Reduced padding
+          viewport={{ once: true, margin: "0px 0px -100px 0px" }}
+          className="container mx-auto px-6 py-12"
         >
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8"> {/* Reduced gap */}
-            {/* Brand Section - Simplified animations */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            {/* Brand Section */}
             <motion.div variants={itemVariants} className="lg:col-span-2">
-              <div className="mb-4"> {/* Removed motion from this container */}
+              <div className="mb-4">
                 <h2 className="text-3xl font-bold bg-gradient-to-r from-purple-400 via-pink-400 to-blue-400 bg-clip-text text-transparent mb-2">
                   Vishal Dwivedy
                 </h2>
                 <motion.div
                   initial={{ width: 0 }}
                   whileInView={{ width: "60%" }}
-                  transition={{ delay: 0.3, duration: 0.8 }} // Faster animation
+                  transition={{ delay: 0.3, duration: 0.8 }}
                   className="h-1 bg-gradient-to-r from-purple-500 to-blue-500 rounded-full mb-4"
                 />
               </div>
-              
-              <p className="text-gray-300 text-base leading-relaxed mb-4 max-w-md"> {/* Smaller text */}
+              <p className="text-gray-300 text-base leading-relaxed mb-4 max-w-md">
                 Crafting digital experiences that inspire and innovate. 
                 Passionate about turning ideas into reality through code.
               </p>
-
-              {/* Contact Info - Simplified hover effects */}
               <div className="space-y-2">
                 <div className="flex items-center gap-3 text-gray-300 hover:text-purple-400 transition-colors cursor-pointer">
                   <FaEnvelope />
                   <span>Vishaldwidy@gmail.com</span>
                 </div>
-                
                 <div className="flex items-center gap-3 text-gray-300 hover:text-blue-400 transition-colors">
                   <FaPhone />
                   <span>+91 7004212369</span>
                 </div>
-                
                 <div className="flex items-center gap-3 text-gray-300 hover:text-green-400 transition-colors">
                   <FaMapMarkerAlt />
                   <span>Chandigarh, India</span>
@@ -171,7 +163,7 @@ const Footer = () => {
               </div>
             </motion.div>
 
-            {/* Quick Links - Simplified animations */}
+            {/* Quick Links */}
             <motion.div variants={itemVariants}>
               <h3 className="text-lg font-semibold mb-4 text-white flex items-center gap-2">
                 <FaRocket className="text-purple-400" />
@@ -192,7 +184,7 @@ const Footer = () => {
               </ul>
             </motion.div>
 
-            {/* Skills Highlight */}
+            {/* Technologies */}
             <motion.div variants={itemVariants}>
               <h3 className="text-lg font-semibold mb-4 text-white flex items-center gap-2">
                 <FaCode className="text-blue-400" />
@@ -209,7 +201,6 @@ const Footer = () => {
                 ))}
               </div>
 
-              {/* Fun Stats - Removed motion */}
               <div className="mt-6 space-y-2">
                 <div className="flex items-center gap-2 text-sm text-gray-400">
                   <FaCoffee className="text-yellow-400" />
@@ -223,7 +214,7 @@ const Footer = () => {
             </motion.div>
           </div>
 
-          {/* Social Links Section - Optimized animations */}
+          {/* Social Links and Scroll to Top */}
           <motion.div
             variants={itemVariants}
             className="flex flex-col items-center mt-12 pt-6 border-t border-gray-700/50"
@@ -231,8 +222,7 @@ const Footer = () => {
             <h3 className="text-lg font-semibold mb-4 text-center text-white">
               Let's Connect & Create Amazing Things Together
             </h3>
-            
-            <div className="flex gap-4 mb-6"> {/* Reduced gap */}
+            <div className="flex gap-4 mb-6">
               {socialLinks.map((social, index) => (
                 <motion.a
                   key={index}
@@ -241,8 +231,8 @@ const Footer = () => {
                   rel="noopener noreferrer"
                   className={`group relative w-12 h-12 border border-gray-600 rounded-full flex items-center justify-center overflow-hidden transition-all duration-200 hover:border-white/50 ${social.hoverColor} hover:shadow-md`}
                   whileHover={{ 
-                    scale: 1.1, // Reduced scale
-                    y: -3 // Reduced lift
+                    scale: 1.1,
+                    y: -3
                   }}
                   whileTap={{ scale: 0.95 }}
                 >
@@ -252,7 +242,6 @@ const Footer = () => {
               ))}
             </div>
 
-            {/* Scroll to Top Button - Simplified */}
             <button
               onClick={scrollToTop}
               className="group relative bg-gradient-to-r from-purple-600 to-blue-600 text-white w-10 h-10 rounded-full flex items-center justify-center hover:shadow-md hover:shadow-purple-500/30 transition-all duration-200"
@@ -263,7 +252,7 @@ const Footer = () => {
           </motion.div>
         </motion.div>
 
-        {/* Bottom Copyright Section - Simplified */}
+        {/* Bottom copyright */}
         <div className="border-t border-gray-700/50 py-4">
           <div className="container mx-auto px-6">
             <div className="flex flex-col md:flex-row justify-between items-center gap-2 text-sm">
@@ -272,7 +261,6 @@ const Footer = () => {
                 <FaHeart className="text-red-500" />
                 <span>by Vishal Dwivedy</span>
               </div>
-              
               <div className="text-gray-400">
                 <span className="bg-gradient-to-r from-purple-400 to-blue-400 bg-clip-text text-transparent">
                   Designed to Inspire • Built to Perform

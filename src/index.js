@@ -56,43 +56,58 @@ const initPerformanceMonitoring = () => {
   }
 };
 
-// Optimized Web Vitals Reporting
+// Optimized Web Vitals Reporting (only logs in development)
 const reportWebVitalsOptimized = (onPerfEntry) => {
-  if (onPerfEntry && typeof onPerfEntry === 'function') {
-    import('web-vitals').then(({ getCLS, getFID, getLCP, getFCP, getTTFB }) => {
-      getCLS(onPerfEntry);
-      getFID(onPerfEntry);
-      getLCP(onPerfEntry);
-      getFCP(onPerfEntry);
-      getTTFB(onPerfEntry);
-    }).catch(() => {
-      console.log('Web Vitals tracking failed to load');
-    });
+  if (
+    onPerfEntry &&
+    typeof onPerfEntry === 'function' &&
+    process.env.NODE_ENV === 'development'
+  ) {
+    import('web-vitals')
+      .then(({ getCLS, getFID, getLCP, getFCP, getTTFB }) => {
+        getCLS(onPerfEntry);
+        getFID(onPerfEntry);
+        getLCP(onPerfEntry);
+        getFCP(onPerfEntry);
+        getTTFB(onPerfEntry);
+      })
+      .catch(() => {
+        console.log('Web Vitals tracking failed to load');
+      });
   }
 };
 
-// Simplified Loading Indicator
+// Simplified Loading Indicator with ARIA attributes for accessibility
 const addLoadingIndicator = () => {
   const loader = document.createElement('div');
   loader.id = 'app-loader';
+  loader.setAttribute('role', 'alert');
+  loader.setAttribute('aria-live', 'polite');
+  loader.setAttribute('aria-busy', 'true');
   loader.innerHTML = `
-    <div class="loader-content">
+    <div class="loader-content" aria-label="Loading">
       <div class="loader-spinner"></div>
+      <span class="sr-only">Loading application...</span>
     </div>
   `;
   document.body.appendChild(loader);
-  
+
   const removeLoader = () => {
     loader.style.opacity = '0';
+    loader.setAttribute('aria-busy', 'false');
     setTimeout(() => loader.remove(), 300);
   };
 
   if (document.readyState === 'complete') {
     setTimeout(removeLoader, 300);
   } else {
-    window.addEventListener('load', () => {
-      setTimeout(removeLoader, 300);
-    }, { once: true });
+    window.addEventListener(
+      'load',
+      () => {
+        setTimeout(removeLoader, 300);
+      },
+      { once: true }
+    );
   }
 };
 
@@ -101,7 +116,7 @@ const rootElement = document.getElementById('root');
 if (rootElement) {
   // Add loading indicator early
   addLoadingIndicator();
-  
+
   // Initialize performance monitoring
   initPerformanceMonitoring();
 
@@ -114,7 +129,7 @@ if (rootElement) {
     </React.StrictMode>
   );
 
-  // Report web vitals
+  // Report web vitals (only logs in dev)
   reportWebVitalsOptimized(console.log);
 } else {
   console.error('Failed to find the root element');
