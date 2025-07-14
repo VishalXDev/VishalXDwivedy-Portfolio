@@ -12,6 +12,7 @@ const Footer = () => {
       { name: 'Skills', href: '#skills' },
       { name: 'Projects', href: '#projects' },
       { name: 'Education', href: '#education' },
+      { name: 'Resume', href: 'https://drive.google.com/file/d/11ExXm9qSkJ7yhzkW6H1oU3PAsXqBh9DU/view', external: true },
       { name: 'Contact', href: '#contact' }
     ],
     socialLinks: [
@@ -81,9 +82,16 @@ const Footer = () => {
           <motion.div variants={fadeInUp}>
             <h3 className="text-lg font-semibold mb-4 flex items-center gap-2"><FaRocket className="text-purple-400" /> Quick Links</h3>
             <ul className="space-y-2">
-              {quickLinks.map(({ name, href }, i) => (
+              {quickLinks.map(({ name, href, external }, i) => (
                 <li key={i}>
-                  <a href={href} className="text-gray-300 hover:text-purple-400 transition-all">{name}</a>
+                  <a
+                    href={href}
+                    target={external ? "_blank" : "_self"}
+                    rel={external ? "noopener noreferrer" : undefined}
+                    className="text-gray-300 hover:text-purple-400 transition-all"
+                  >
+                    {name}
+                  </a>
                 </li>
               ))}
             </ul>
@@ -136,7 +144,7 @@ const Footer = () => {
       <div className="border-t border-gray-700/50 py-4 text-sm text-gray-400 text-center">
         <div className="container mx-auto px-4 flex flex-col md:flex-row justify-between items-center gap-2">
           <div className="flex items-center gap-2">
-            <span>© 2025 Made with</span>
+            <span>© {new Date().getFullYear()} Made with</span>
             <FaHeart className="text-red-500" />
             <span>by Vishal Dwivedy</span>
           </div>

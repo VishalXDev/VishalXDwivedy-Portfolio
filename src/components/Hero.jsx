@@ -1,3 +1,4 @@
+// Updated Hero.jsx with intro, tagline, and CV-aligned paragraph
 import React, { useState, useRef, useCallback, useMemo } from 'react';
 import {
   FaInstagram, FaGithub, FaLinkedinIn,
@@ -8,7 +9,7 @@ import { motion as m, useMotionValue, useTransform } from 'framer-motion';
 const Hero = () => {
   const [isSpeaking, setIsSpeaking] = useState(false);
   const heroRef = useRef(null);
-  const introduction = "Hi, I'm Vishal Dwivedy, a Software Engineer specializing in cutting-edge web development.";
+  const introduction = "Hi, I'm Vishal Dwivedy, a Full-Stack Software Engineer building scalable, production-ready web apps using React.js, Node.js, and modern cloud tools.";
 
   const toggleSpeech = useCallback(() => {
     if (isSpeaking) {
@@ -86,15 +87,14 @@ const Hero = () => {
               <div className="flex items-center gap-2">
                 <FaBolt className="text-yellow-400" />
                 <h2 className="text-xl md:text-2xl font-semibold bg-gradient-to-r from-yellow-400 to-orange-400 bg-clip-text text-transparent">
-                  Software Engineer & Innovation Catalyst
+                  Full-Stack Engineer | AI-Powered Web Solutions
                 </h2>
               </div>
             </div>
 
             <p className="text-base md:text-lg text-gray-300 max-w-2xl leading-relaxed">
-              Crafting digital experiences that push boundaries and redefine possibilities.
-              With a passion for cutting-edge technologies, I transform complex challenges
-              into elegant, scalable solutions that make an impact.
+              Full-Stack Software Engineer skilled in crafting production-grade web applications using React.js, Node.js, and modern cloud tools. 
+              I specialize in real-time UX, AI integrations, and performance-optimized architectures that create lasting user impact.
             </p>
 
             <div className="flex flex-wrap gap-3">
@@ -122,6 +122,7 @@ const Hero = () => {
 
               <button
                 onClick={toggleSpeech}
+                title={isSpeaking ? "Stop Voice" : "Hear Introduction"}
                 className={`w-12 h-12 border border-purple-500/50 rounded-full flex items-center justify-center text-purple-400 hover:border-purple-400 hover:text-purple-300 transition-all duration-200 hover:scale-105 ${isSpeaking ? 'animate-pulse shadow-md shadow-purple-500/30' : ''}`}
               >
                 {isSpeaking ? <FaVolumeMute /> : <FaVolumeUp />}
@@ -164,7 +165,7 @@ const Hero = () => {
                 ))}
               </div>
 
-              {/* Bigger Profile Image with Glow */}
+              {/* Profile Image */}
               <div className="absolute inset-0 flex flex-col items-center justify-center text-center z-10 p-4">
                 <div className="w-28 h-28 rounded-full bg-gradient-to-br from-purple-500 to-blue-500 p-1 shadow-lg shadow-purple-500/30 animate-glow">
                   <img

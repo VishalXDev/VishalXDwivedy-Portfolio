@@ -46,11 +46,9 @@ const Education = () => {
       id="education"
       className="relative min-h-screen pt-20 pb-20 bg-gray-900 text-white"
     >
-      {/* Simplified background */}
       <div className="absolute inset-0 bg-gradient-to-br from-gray-900 via-purple-900/10 to-blue-900/10" />
 
       <div className="container mx-auto px-6 relative z-10">
-        {/* Header */}
         <div className="text-center mb-16">
           <div className="text-5xl mb-4">🎓</div>
           <h2 className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-purple-400 via-pink-400 to-blue-400 bg-clip-text text-transparent mb-4">
@@ -62,7 +60,6 @@ const Education = () => {
           </p>
         </div>
 
-        {/* Education Cards */}
         <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-8 mb-16">
           {educationData.map((item, index) => (
             <div
@@ -83,7 +80,6 @@ const Education = () => {
               }}
             >
               <div>
-                {/* Status Badge */}
                 <div
                   className={`inline-block px-4 py-2 rounded-full text-sm font-bold mb-4 ${
                     item.status === 'Completed'
@@ -94,20 +90,16 @@ const Education = () => {
                   <strong>{item.status}</strong>
                 </div>
 
-                {/* Institution */}
                 <h3 className="text-2xl font-bold text-white mb-2">
                   <strong>{item.institution}</strong>
                 </h3>
 
-                {/* Degree */}
                 <p className="text-lg text-gray-300 mb-3">{item.degree}</p>
 
-                {/* Highlight */}
                 <p className="text-base text-purple-300 mb-4 font-semibold">
                   <strong>{item.highlight}</strong>
                 </p>
 
-                {/* Period & Score */}
                 <div className="flex flex-wrap gap-3 mb-4">
                   <span className="text-sm text-gray-400 bg-white/5 px-3 py-1 rounded-full">
                     {item.period}
@@ -120,7 +112,6 @@ const Education = () => {
                 </div>
               </div>
 
-              {/* Note */}
               {item.note && (
                 <div className="bg-white/5 rounded-lg p-4 border-l-4 border-purple-500/50 mt-auto">
                   <p className="text-sm text-gray-300 italic">💡 {item.note}</p>
@@ -130,7 +121,6 @@ const Education = () => {
           ))}
         </div>
 
-        {/* Certifications */}
         <div className="max-w-4xl mx-auto">
           <div className="text-center mb-10">
             <h3 className="text-3xl font-bold bg-gradient-to-r from-yellow-400 to-orange-400 bg-clip-text text-transparent mb-4">

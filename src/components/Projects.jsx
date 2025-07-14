@@ -7,26 +7,43 @@ const Projects = () => {
 
   const projects = useMemo(() => [
     {
-      title: "E-Commerce App",
-      description: "A full-featured React Native app using Expo Router with product listings, cart functionality, and persistent storage.",
-      technologies: ["React Native", "Expo Router", "Context API", "AsyncStorage"],
+      title: "Job Pilot AI",
+      description: "AI-powered job tracking app with resume insights, secure login, and smart assistant features.",
+      technologies: ["React.js", "Tailwind CSS", "Node.js", "MongoDB", "OpenAI API", "JWT"],
       points: [
-        "Built with Expo Router and Context API for clean routing and global state management.",
-        "Supports cart operations, local storage with AsyncStorage, and responsive design.",
+        "Built smart dashboard with CRUD job management and search/filter options.",
+        "Integrated GPT-4 powered AI assistant for personalized job insights.",
+        "Implemented secure JWT auth and reminder system."
       ],
-      github: "https://github.com/VishalXDev/e-commerce-app",
-      demo: "https://e-commerce-app-ten-beryl.vercel.app/",
-      icon: "📱",
-      gradient: "from-purple-600 via-pink-600 to-red-600",
-      glowColor: "rgba(147, 51, 234, 0.3)"
+      github: "https://github.com/VishalXDev/JobPilot-AI",
+      demo: "https://job-pilot-ai.vercel.app/",
+      icon: "🧠",
+      gradient: "from-purple-600 via-indigo-600 to-blue-600",
+      glowColor: "rgba(139, 92, 246, 0.3)"
+    },
+    {
+      title: "Mood Time Machine",
+      description: "AI companion app that reflects on your Spotify mood history using OpenAI.",
+      technologies: ["React.js", "Node.js", "Tailwind CSS", "Spotify API", "OpenAI API", "Chart.js"],
+      points: [
+        "Analyzes listening behavior with Spotify OAuth and audio feature insights.",
+        "Generates mood-based reflections using OpenAI GPT.",
+        "Includes dynamic charts and animated UI with demo mode."
+      ],
+      github: "https://github.com/VishalXDev/Mood-Time-Machine",
+      demo: "https://mood-time-machine.vercel.app/",
+      icon: "🎧",
+      gradient: "from-teal-500 via-blue-500 to-purple-500",
+      glowColor: "rgba(56, 189, 248, 0.3)"
     },
     {
       title: "Boom Entertainment – Video Platform",
-      description: "Full-stack video sharing platform with long/short video support, virtual gifting, and wallet system.",
+      description: "Scalable video sharing platform with uploads, comments, and wallet integration.",
       technologies: ["Next.js", "Node.js", "MongoDB", "Cloudinary", "JWT"],
       points: [
-        "Developed long/short video feed, comment system, virtual gifts, and monetization.",
-        "Implemented wallet transactions, JWT Auth, and responsive cloud deployment."
+        "Implemented long/short video feed, gifting system, and comment moderation.",
+        "JWT-based authentication and cloud upload via Cloudinary.",
+        "CI/CD deployment on Vercel with GitHub Actions."
       ],
       github: "https://github.com/VishalXDev/Boom-Entertainment-Video-Platform",
       demo: "https://boom-entertainment.vercel.app/",
@@ -35,47 +52,35 @@ const Projects = () => {
       glowColor: "rgba(255, 99, 132, 0.3)"
     },
     {
-      title: "Translate App",
-      description: "Fast multilingual translator using LibreTranslate API with modern UI and instant updates.",
-      technologies: ["React.js", "TypeScript", "Vercel", "LibreTranslate API"],
+      title: "NotePilot AI",
+      description: "AI-powered personal knowledge base with semantic search and PDF Q&A.",
+      technologies: ["Next.js", "Node.js", "OpenAI API", "MongoDB", "Tailwind CSS", "Pinecone"],
       points: [
-        "Built using TypeScript with smooth UX and responsive multilingual support.",
-        "Integrated LibreTranslate API for real-time translations."
+        "Upload notes or PDFs and ask questions for AI-powered summaries.",
+        "Integrated semantic vector search using OpenAI embeddings + Pinecone.",
+        "Secure auth, file upload, and interactive Q&A interface."
       ],
-      github: "https://github.com/VishalXDev/translate-app",
-      demo: "https://translate-app-red.vercel.app/",
-      icon: "🌐",
-      gradient: "from-blue-500 via-green-400 to-teal-400",
-      glowColor: "rgba(59, 130, 246, 0.3)"
+      github: "https://github.com/VishalXDev/NotePilot-AI",
+      demo: "https://notepilot-ai.vercel.app/",
+      icon: "📚",
+      gradient: "from-cyan-500 via-blue-400 to-purple-500",
+      glowColor: "rgba(34, 211, 238, 0.3)"
     },
     {
-      title: "Offline Notes App",
-      description: "PWA-capable notes app with offline access, tagging, and search functionality.",
-      technologies: ["React.js", "TypeScript", "LocalStorage"],
+      title: "Google Form Clone",
+      description: "Real-time dynamic form builder with validation, UI logic, and response storage.",
+      technologies: ["React.js", "Firebase", "Tailwind CSS"],
       points: [
-        "Built offline-first design using local storage.",
-        "Implemented tag-based filtering and search with a modern UI."
+        "Supports dynamic field addition, real-time updates, and form response saving.",
+        "Validation rules and preview logic included.",
+        "Firebase backend and fully responsive UI."
       ],
-      github: "https://github.com/VishalXDev/offline-notes-app",
-      demo: "https://offline-notes.vercel.app/",
-      icon: "🗒️",
-      gradient: "from-green-500 via-lime-500 to-yellow-400",
-      glowColor: "rgba(34, 197, 94, 0.3)"
-    },
-    {
-      title: "Pgagi Dashboard",
-      description: "Admin dashboard with data management views and optimized performance UI.",
-      technologies: ["React.js", "MongoDB", "Express.js", "Tailwind CSS"],
-      points: [
-        "Built dashboard panels and integrated backend using RESTful APIs.",
-        "Used modern design components with responsive layouts."
-      ],
-      github: "https://github.com/VishalXDev/Pgagi-Dashboard",
-      demo: "https://pgagi-dashboard.vercel.app/",
-      icon: "📊",
-      gradient: "from-indigo-600 via-blue-500 to-cyan-500",
+      github: "https://github.com/VishalXDev/Google-Form-Clone",
+      demo: "https://google-form-clone.vercel.app/",
+      icon: "📝",
+      gradient: "from-indigo-600 via-blue-500 to-cyan-400",
       glowColor: "rgba(99, 102, 241, 0.3)"
-    },
+    }
   ], []);
 
   return (
