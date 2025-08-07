@@ -127,22 +127,7 @@ const About = () => {
                   </h3>
 
                   <p className="text-gray-300 leading-relaxed mb-6">
-                    <span className="text-cyan-400 font-semibold">
-                      Full-Stack Software Engineer
-                    </span>{" "}
-                    skilled in building{" "}
-                    <span className="text-purple-400 font-semibold">
-                      scalable, production-ready web apps
-                    </span>{" "}
-                    using React.js, Node.js, Express.js, and MongoDB.
-                    Experienced in secure{" "}
-                    <span className="text-pink-400 font-semibold">
-                      JWT/OAuth authentication, AI integrations (OpenAI/Spotify),
-                      and real-time UX
-                    </span>
-                    . Proven track record of optimizing APIs by 40% and delivering
-                    cloud-deployed apps via Vercel/Railway. Passionate about
-                    crafting high-performance solutions in agile teams.
+                    Full-Stack Software Engineer skilled in building scalable, production-ready web apps using React.js, Node.js, Express.js, and MongoDB. Experienced in secure JWT/OAuth authentication, AI integrations (OpenAI/Spotify), and real-time UX. Proven track record of optimizing APIs by 40% and delivering cloud-deployed apps via Vercel/Railway.
                   </p>
 
                   <div className="space-y-4">

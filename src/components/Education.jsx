@@ -1,15 +1,16 @@
 import React from 'react';
+import { motion } from 'framer-motion';
 
 const Education = () => {
   const educationData = [
     {
       institution: 'Chandigarh University',
-      degree: 'B. Tech in Computer Science Engineering',
-      period: 'Expected Graduation: 2026',
+      degree: 'B.Tech in Computer Science',
+      period: 'Expected 2026',
       icon: '🎓',
       gradient: 'from-purple-500/10 via-blue-500/10 to-cyan-500/10',
       status: 'In Progress',
-      highlight: 'Advanced Programming & AI Focus',
+      highlight: 'Specializing in AI & Full-Stack Development',
     },
     {
       institution: 'S.S.J.S.N College',
@@ -19,24 +20,24 @@ const Education = () => {
       icon: '🧠',
       gradient: 'from-pink-500/10 via-rose-500/10 to-orange-500/10',
       status: 'Completed',
-      note: 'Psychology background enhances user-focused design thinking and UI/UX empathy.',
-      highlight: 'Human-Computer Interaction Expertise',
+      note: 'Psychology background enhances UX design thinking and human-computer interaction understanding.',
+      highlight: 'User-Focused Design Perspective',
     },
   ];
 
   const certifications = [
     {
       title: 'Full-Stack Web Development',
-      subtitle: 'Advanced React.js & Node.js',
+      subtitle: 'React.js & Node.js Specialization',
       issuer: 'IBM',
       icon: '💻',
       color: 'text-blue-400',
     },
     {
-      title: 'Data Science with R',
-      subtitle: 'Applied AI & Visualization',
+      title: 'AI & Machine Learning',
+      subtitle: 'Applied AI Concepts',
       issuer: 'Chandigarh University',
-      icon: '📊',
+      icon: '🤖',
       color: 'text-green-400',
     },
   ];
@@ -44,126 +45,114 @@ const Education = () => {
   return (
     <section
       id="education"
-      className="relative min-h-screen pt-20 pb-20 bg-gray-900 text-white"
+      className="relative min-h-screen pt-20 pb-20 bg-gradient-to-br from-gray-900 via-purple-900/20 to-blue-900/30"
     >
-      <div className="absolute inset-0 bg-gradient-to-br from-gray-900 via-purple-900/10 to-blue-900/10" />
+      <div className="absolute inset-0 pointer-events-none">
+        <div className="absolute -top-40 -right-40 w-80 h-80 bg-gradient-to-br from-purple-500/10 to-pink-500/10 rounded-full blur-2xl opacity-30" />
+        <div className="absolute -bottom-40 -left-40 w-96 h-96 bg-gradient-to-tr from-blue-500/10 to-cyan-500/10 rounded-full blur-2xl opacity-30" />
+      </div>
 
       <div className="container mx-auto px-6 relative z-10">
-        <div className="text-center mb-16">
-          <div className="text-5xl mb-4">🎓</div>
-          <h2 className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-purple-400 via-pink-400 to-blue-400 bg-clip-text text-transparent mb-4">
-            Educational Journey
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          className="text-center mb-16"
+        >
+          <h2 className="text-5xl md:text-6xl font-bold bg-gradient-to-r from-cyan-400 via-purple-400 to-pink-400 bg-clip-text text-transparent mb-4">
+            Education
           </h2>
-          <div className="h-1 bg-gradient-to-r from-purple-500 to-blue-500 w-20 mx-auto rounded-full mb-4" />
+          <div className="h-1 w-24 bg-gradient-to-r from-cyan-400 to-purple-400 mx-auto rounded-full mb-4" />
           <p className="text-gray-300 max-w-2xl mx-auto">
-            Building expertise through continuous learning and academic excellence
+            Combining technical expertise with psychological insights for holistic digital solutions
           </p>
-        </div>
+        </motion.div>
 
         <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-8 mb-16">
           {educationData.map((item, index) => (
-            <div
+            <motion.div
               key={index}
-              className={`relative group bg-gradient-to-br ${item.gradient} backdrop-blur-sm rounded-2xl p-6 transition-all duration-300 h-80 flex flex-col justify-between`}
-              style={{
-                background: `linear-gradient(135deg, ${item.gradient.includes('purple') ? 'rgba(168, 85, 247, 0.1)' : 'rgba(236, 72, 153, 0.1)'} 0%, ${item.gradient.includes('blue') ? 'rgba(59, 130, 246, 0.1)' : 'rgba(251, 146, 60, 0.1)'} 100%)`,
-                border: '1px solid rgba(255, 255, 255, 0.1)',
-                boxShadow: `0 0 20px ${item.gradient.includes('purple') ? 'rgba(168, 85, 247, 0.3)' : 'rgba(236, 72, 153, 0.3)'}`,
-              }}
-              onMouseEnter={(e) => {
-                e.currentTarget.style.boxShadow = `0 0 30px ${item.gradient.includes('purple') ? 'rgba(168, 85, 247, 0.5)' : 'rgba(236, 72, 153, 0.5)'}`;
-                e.currentTarget.style.border = '1px solid rgba(255, 255, 255, 0.3)';
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.boxShadow = `0 0 20px ${item.gradient.includes('purple') ? 'rgba(168, 85, 247, 0.3)' : 'rgba(236, 72, 153, 0.3)'}`;
-                e.currentTarget.style.border = '1px solid rgba(255, 255, 255, 0.1)';
-              }}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: index * 0.1 }}
+              viewport={{ once: true }}
+              className={`relative group bg-gradient-to-br ${item.gradient} backdrop-blur-sm rounded-2xl p-8 border border-white/10 shadow-lg transition-all duration-300 h-full`}
+              whileHover={{ y: -5, scale: 1.02 }}
             >
-              <div>
-                <div
-                  className={`inline-block px-4 py-2 rounded-full text-sm font-bold mb-4 ${
-                    item.status === 'Completed'
-                      ? 'bg-green-500/20 text-green-400'
+              <div className="flex flex-col h-full">
+                <div>
+                  <div className="text-4xl mb-4">{item.icon}</div>
+                  <div className={`inline-block px-4 py-2 rounded-full text-sm font-semibold mb-4 ${
+                    item.status === 'Completed' 
+                      ? 'bg-green-500/20 text-green-400' 
                       : 'bg-blue-500/20 text-blue-400'
-                  }`}
-                >
-                  <strong>{item.status}</strong>
-                </div>
+                  }`}>
+                    {item.status}
+                  </div>
 
-                <h3 className="text-2xl font-bold text-white mb-2">
-                  <strong>{item.institution}</strong>
-                </h3>
+                  <h3 className="text-2xl font-bold text-white mb-2">{item.institution}</h3>
+                  <p className="text-lg text-gray-300 mb-3">{item.degree}</p>
+                  <p className="text-base text-purple-300 font-medium mb-4">{item.highlight}</p>
 
-                <p className="text-lg text-gray-300 mb-3">{item.degree}</p>
-
-                <p className="text-base text-purple-300 mb-4 font-semibold">
-                  <strong>{item.highlight}</strong>
-                </p>
-
-                <div className="flex flex-wrap gap-3 mb-4">
-                  <span className="text-sm text-gray-400 bg-white/5 px-3 py-1 rounded-full">
-                    {item.period}
-                  </span>
-                  {item.score && (
-                    <span className="text-sm text-green-400 bg-green-500/10 px-3 py-1 rounded-full font-semibold">
-                      {item.score}
+                  <div className="flex flex-wrap gap-3 mb-6">
+                    <span className="text-sm text-gray-300 bg-white/5 px-3 py-1 rounded-full">
+                      {item.period}
                     </span>
-                  )}
+                    {item.score && (
+                      <span className="text-sm text-green-400 bg-green-500/10 px-3 py-1 rounded-full font-semibold">
+                        {item.score}
+                      </span>
+                    )}
+                  </div>
                 </div>
-              </div>
 
-              {item.note && (
-                <div className="bg-white/5 rounded-lg p-4 border-l-4 border-purple-500/50 mt-auto">
-                  <p className="text-sm text-gray-300 italic">💡 {item.note}</p>
-                </div>
-              )}
-            </div>
+                {item.note && (
+                  <div className="mt-auto bg-white/5 rounded-lg p-4 border-l-4 border-purple-500/50">
+                    <p className="text-sm text-gray-300 italic">💡 {item.note}</p>
+                  </div>
+                )}
+              </div>
+            </motion.div>
           ))}
         </div>
 
-        <div className="max-w-4xl mx-auto">
+        <motion.div
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          transition={{ duration: 0.6 }}
+          viewport={{ once: true }}
+          className="max-w-4xl mx-auto"
+        >
           <div className="text-center mb-10">
             <h3 className="text-3xl font-bold bg-gradient-to-r from-yellow-400 to-orange-400 bg-clip-text text-transparent mb-4">
-              Professional Certifications
+              Certifications
             </h3>
             <div className="w-16 h-1 bg-gradient-to-r from-yellow-400 to-orange-400 mx-auto rounded-full" />
           </div>
 
           <div className="grid md:grid-cols-2 gap-6">
             {certifications.map((cert, index) => (
-              <div
+              <motion.div
                 key={index}
-                className="relative bg-gray-800/50 backdrop-blur-sm rounded-xl p-6 transition-all duration-300"
-                style={{
-                  border: '1px solid rgba(255, 255, 255, 0.1)',
-                  boxShadow: '0 0 15px rgba(59, 130, 246, 0.2)',
-                }}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.boxShadow = '0 0 25px rgba(59, 130, 246, 0.4)';
-                  e.currentTarget.style.border = '1px solid rgba(255, 255, 255, 0.2)';
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.boxShadow = '0 0 15px rgba(59, 130, 246, 0.2)';
-                  e.currentTarget.style.border = '1px solid rgba(255, 255, 255, 0.1)';
-                }}
+                whileHover={{ y: -3, scale: 1.02 }}
+                className="relative bg-gray-800/50 backdrop-blur-sm rounded-xl p-6 border border-white/10 shadow-md transition-all duration-300"
               >
-                <div className="flex items-start space-x-4">
+                <div className="flex items-start gap-4">
                   <div className="text-3xl">
                     {cert.icon}
                   </div>
-
-                  <div className="flex-1">
-                    <h4 className={`font-bold text-lg mb-1 ${cert.color}`}>{cert.title}</h4>
+                  <div>
+                    <h4 className={`text-xl font-bold mb-1 ${cert.color}`}>{cert.title}</h4>
                     <p className="text-gray-300 text-sm mb-2">{cert.subtitle}</p>
-                    <p className="text-xs text-gray-500 bg-white/5 px-2 py-1 rounded-full inline-block">
+                    <span className="text-xs text-gray-400 bg-white/5 px-2 py-1 rounded-full">
                       {cert.issuer}
-                    </p>
+                    </span>
                   </div>
                 </div>
-              </div>
+              </motion.div>
             ))}
           </div>
-        </div>
+        </motion.div>
       </div>
     </section>
   );

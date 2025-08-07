@@ -33,23 +33,42 @@ const Experience = () => {
   const { experiences, achievements, stats } = useMemo(() => ({
     experiences: [
       {
-        title: 'Software Developer Intern',
+        title: 'Software Developer (SDE1)',
         company: 'Bitsphere Infotech Pvt Ltd',
         location: 'Ranchi, India',
-        period: 'Apr 2024 – Sep 2024',
+        period: 'Sep 2024 – Feb 2025',
         duration: '6 months',
-        type: 'Full-time Internship',
+        type: 'Full-time',
         description: [
-          'Designed and developed responsive landing pages using React.js and Tailwind CSS, improving user engagement by 25% through optimized UI/UX design and mobile-first approach.',
-          'Integrated RESTful APIs using Axios and Fetch API for seamless frontend-backend data flow, ensuring real-time data synchronization and enhanced user experience.',
-          'Collaborated effectively in an agile development environment, utilizing Git for version control, participating in code reviews, and implementing comprehensive testing practices to maintain code quality and project deliverables.',
-          'Specialized in creating high-converting landing pages with focus on performance optimization, accessibility standards, and cross-browser compatibility.'
+          'Developed responsive React.js landing pages with Tailwind CSS, increasing engagement by 25% through optimized UI/UX design and mobile-first approach.',
+          'Consumed REST APIs using Axios/Fetch for seamless data flow between frontend and backend systems.',
+          'Contributed to daily standups, code reviews, and Git-based team workflows in an agile development environment.',
+          'Implemented performance optimizations that reduced page load times by 30% across key user flows.'
         ],
         technologies: ['React.js', 'Tailwind CSS', 'JavaScript', 'REST APIs', 'Axios', 'Git', 'Agile Methodology', 'Responsive Design'],
         color: 'from-blue-500 to-cyan-500',
         bgColor: 'from-blue-500/10 to-cyan-500/10',
         borderGlow: 'shadow-[0_0_20px_rgba(59,130,246,0.3),0_0_40px_rgba(6,182,212,0.2)]',
         icon: <FaBriefcase />
+      },
+      {
+        title: 'Software Developer Intern',
+        company: 'Bitsphere Infotech Pvt Ltd',
+        location: 'Ranchi, India',
+        period: 'Apr 2024 – Sep 2024',
+        duration: '6 months',
+        type: 'Internship',
+        description: [
+          'Designed and developed responsive landing pages using React.js and Tailwind CSS, improving user engagement by 25%.',
+          'Integrated RESTful APIs using Axios and Fetch API for seamless frontend-backend data flow.',
+          'Collaborated in an agile development environment, utilizing Git for version control and participating in code reviews.',
+          'Specialized in creating high-converting landing pages with focus on performance optimization and accessibility.'
+        ],
+        technologies: ['React.js', 'Tailwind CSS', 'JavaScript', 'REST APIs', 'Axios', 'Git', 'Agile Methodology', 'Responsive Design'],
+        color: 'from-purple-500 to-pink-500',
+        bgColor: 'from-purple-500/10 to-pink-500/10',
+        borderGlow: 'shadow-[0_0_20px_rgba(168,85,247,0.3),0_0_40px_rgba(236,72,153,0.2)]',
+        icon: <FaCode />
       }
     ],
     achievements: [
@@ -76,9 +95,9 @@ const Experience = () => {
       },
       {
         icon: <FaServer />,
-        title: 'Landing Page Specialist',
-        description: 'Specialized in creating high-converting landing pages with focus on performance and accessibility.',
-        impact: 'Performance optimized',
+        title: 'Performance Optimization',
+        description: 'Reduced page load times by 30% through various frontend optimizations and best practices.',
+        impact: '30% faster',
         color: 'from-indigo-400 to-blue-500'
       }
     ],
@@ -86,7 +105,7 @@ const Experience = () => {
       { label: 'User Engagement', value: '25%↑', icon: <FaChartLine /> },
       { label: 'Projects Completed', value: '5+', icon: <FaCode /> },
       { label: 'APIs Integrated', value: '10+', icon: <FaServer /> },
-      { label: 'Team Collaboration', value: '100%', icon: <FaUsers /> }
+      { label: 'Performance Gain', value: '30%↑', icon: <FaCog /> }
     ]
   }), []);
 
@@ -186,7 +205,7 @@ const Experience = () => {
               aria-pressed={selectedExperience === idx}
               aria-label={`Select experience at ${exp.company}`}
             >
-              {exp.company}
+              {exp.title}
             </button>
           ))}
         </div>

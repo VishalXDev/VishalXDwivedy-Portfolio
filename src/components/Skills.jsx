@@ -1,4 +1,4 @@
-// Updated Skills.jsx with AI category and tabbed layout
+// Updated Skills.jsx with your skill categories
 import React, { useMemo, useState } from 'react';
 import { motion } from 'framer-motion';
 import {
@@ -18,58 +18,44 @@ const tabVariants = {
 };
 
 const Skills = () => {
-  const [activeTab, setActiveTab] = useState("Languages & Frontend");
+  const [activeTab, setActiveTab] = useState("Frontend");
 
   const skillCategories = useMemo(() => [
     {
-      title: 'Languages & Frontend',
+      title: 'Frontend',
       icon: FaCode,
       color: 'from-blue-500 to-purple-600',
       glowColor: 'rgba(59, 130, 246, 0.3)',
-      skills: ['JavaScript (ES6+)', 'TypeScript', 'Python', 'React.js', 'Next.js', 'Vue.js', 'Redux', 'HTML5', 'CSS3', 'Tailwind CSS'],
+      skills: ['React.js', 'Next.js', 'Vue.js', 'JavaScript (ES6+)', 'TypeScript', 'HTML5', 'CSS3', 'Tailwind CSS'],
       specialIcons: {
-        'React.js': FaReact, 'Python': FaPython, 'TypeScript': SiTypescript, 'Next.js': SiNextdotjs,
-        'Vue.js': SiVuedotjs, 'Redux': SiRedux, 'HTML5': FaHtml5, 'CSS3': FaCss3Alt, 'Tailwind CSS': SiTailwindcss
+        'React.js': FaReact, 'TypeScript': SiTypescript, 'Next.js': SiNextdotjs,
+        'Vue.js': SiVuedotjs, 'HTML5': FaHtml5, 'CSS3': FaCss3Alt, 'Tailwind CSS': SiTailwindcss
       }
     },
     {
-      title: 'Backend & Databases',
+      title: 'Backend',
       icon: FaDatabase,
       color: 'from-green-500 to-teal-600',
       glowColor: 'rgba(34, 197, 94, 0.3)',
-      skills: ['Node.js', 'Express.js', 'MongoDB', 'Firebase', 'Redis', 'REST APIs', 'WebSockets'],
+      skills: ['Node.js', 'Express.js', 'REST APIs', 'JWT', 'Firebase', 'Redis', 'WebSockets'],
       specialIcons: {
-        'Node.js': FaNodeJs, 'Express.js': SiExpress, 'MongoDB': SiMongodb, 'Firebase': SiFirebase, 'Redis': SiRedis
+        'Node.js': FaNodeJs, 'Express.js': SiExpress, 'Firebase': SiFirebase, 'Redis': SiRedis
       }
     },
     {
-      title: 'AI & Integrations',
-      icon: FaRobot,
-      color: 'from-pink-500 to-rose-500',
-      glowColor: 'rgba(236, 72, 153, 0.3)',
-      skills: ['OpenAI API', 'Spotify API', 'Semantic Search', 'Embeddings', 'LangChain']
-    },
-    {
-      title: 'Cloud & Deployment',
+      title: 'DevOps',
       icon: FaCloud,
       color: 'from-orange-500 to-red-600',
       glowColor: 'rgba(249, 115, 22, 0.3)',
-      skills: ['GitHub Actions', 'Vercel', 'Render', 'Railway', 'Cloudinary'],
+      skills: ['Vercel', 'Render', 'Railway', 'GitHub Actions', 'Cloudinary'],
       specialIcons: { 'Vercel': SiVercel, 'Render': SiRender, 'Cloudinary': SiCloudinary }
     },
     {
-      title: 'Authentication & Security',
-      icon: FaShieldAlt,
-      color: 'from-red-500 to-rose-600',
-      glowColor: 'rgba(239, 68, 68, 0.3)',
-      skills: ['JWT', 'OAuth 2.0', 'Authentication Systems', 'Security Best Practices']
-    },
-    {
-      title: 'Tools & Practices',
+      title: 'Tools',
       icon: FaTools,
       color: 'from-yellow-500 to-orange-600',
       glowColor: 'rgba(245, 158, 11, 0.3)',
-      skills: ['Git', 'GitHub', 'Postman', 'Agile Methodologies', 'Unit Testing', 'Version Control', 'Performance Optimization'],
+      skills: ['Git', 'GitHub', 'Postman', 'VS Code', 'Chrome DevTools'],
       specialIcons: { 'Git': FaGitAlt, 'GitHub': FaGithub, 'Postman': SiPostman }
     },
     {
@@ -77,7 +63,7 @@ const Skills = () => {
       icon: FaNetworkWired,
       color: 'from-purple-500 to-pink-600',
       glowColor: 'rgba(168, 85, 247, 0.3)',
-      skills: ['Team Collaboration', 'Communication', 'Problem Solving', 'Agile Workflows', 'User-Focused Design', 'UX Empathy']
+      skills: ['Problem Solving', 'Communication', 'Team Collaboration', 'Agile']
     }
   ], []);
 

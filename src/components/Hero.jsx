@@ -1,8 +1,8 @@
-// Updated Hero.jsx with intro, tagline, and CV-aligned paragraph
+// Updated Hero.jsx with simplified headline and social links
 import React, { useState, useRef, useCallback, useMemo } from 'react';
 import {
   FaInstagram, FaGithub, FaLinkedinIn,
-  FaVolumeUp, FaVolumeMute, FaRocket, FaCode, FaBolt
+  FaVolumeUp, FaVolumeMute, FaRocket, FaCode, FaBolt, FaEnvelope
 } from 'react-icons/fa';
 import { motion as m, useMotionValue, useTransform } from 'framer-motion';
 
@@ -24,9 +24,9 @@ const Hero = () => {
   }, [isSpeaking]);
 
   const socialLinks = useMemo(() => [
-    { icon: FaInstagram, href: "https://www.instagram.com/", color: "hover:text-pink-400" },
-    { icon: FaGithub, href: "https://github.com/VishalXDev", color: "hover:text-gray-300" },
-    { icon: FaLinkedinIn, href: "https://www.linkedin.com/in/vishal-dwivedy", color: "hover:text-blue-400" }
+    { icon: FaGithub, href: "https://github.com/VishalXDev", color: "hover:text-gray-300", label: "GitHub" },
+    { icon: FaLinkedinIn, href: "https://www.linkedin.com/in/vishal-dwivedy", color: "hover:text-blue-400", label: "LinkedIn" },
+    { icon: FaEnvelope, href: "mailto:Vishaldwidy@gmail.com", color: "hover:text-red-400", label: "Email" }
   ], []);
 
   const x = useMotionValue(0);
@@ -77,23 +77,18 @@ const Hero = () => {
             </div>
 
             <div className="space-y-3">
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight">
-                <span className="text-white">Hi, I'm </span>
-                <span className="bg-gradient-to-r from-purple-400 via-pink-400 to-blue-400 bg-clip-text text-transparent">Vishal</span>
-                <br />
-                <span className="bg-gradient-to-r from-cyan-400 via-blue-400 to-purple-400 bg-clip-text text-transparent">Dwivedy</span>
+              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4">
+                Hi, I'm Vishal Dwivedy
               </h1>
 
-              <div className="flex items-center gap-2">
+              <p className="text-xl md:text-2xl text-gray-300 mb-6 flex items-center gap-2">
                 <FaBolt className="text-yellow-400" />
-                <h2 className="text-xl md:text-2xl font-semibold bg-gradient-to-r from-yellow-400 to-orange-400 bg-clip-text text-transparent">
-                  Full-Stack Engineer | AI-Powered Web Solutions
-                </h2>
-              </div>
+                🚀 Full-Stack Software Engineer | 🤖 AI-Powered Web Solutions | ☁️ Cloud Developer
+              </p>
             </div>
 
             <p className="text-base md:text-lg text-gray-300 max-w-2xl leading-relaxed">
-              Full-Stack Software Engineer skilled in crafting production-grade web applications using React.js, Node.js, and modern cloud tools. 
+              Full-Stack Software Engineer skilled in crafting production-grade web applications using React.js, Node.js, and modern cloud tools.
               I specialize in real-time UX, AI integrations, and performance-optimized architectures that create lasting user impact.
             </p>
 
@@ -109,7 +104,7 @@ const Hero = () => {
               </m.button>
 
               <a
-                href="https://drive.google.com/file/d/11ExXm9qSkJ7yhzkW6H1oU3PAsXqBh9DU/view"
+                href="https://drive.google.com/file/d/1fVTpm2GUms8XP4X934aQ5s_RRWNepzYJ/view"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="border border-purple-500/50 text-white px-6 py-3 rounded-full font-semibold transition-all duration-200 hover:border-purple-400 hover:shadow-md hover:shadow-purple-500/20 hover:scale-105"
@@ -129,16 +124,17 @@ const Hero = () => {
               </button>
             </div>
 
-            <div className="flex gap-3">
-              {socialLinks.map(({ icon: Icon, href, color }, index) => (
+            <div className="flex gap-4">
+              {socialLinks.map(({ icon: Icon, href, color, label }, index) => (
                 <a
                   key={index}
                   href={href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className={`w-10 h-10 border border-gray-600 rounded-full flex items-center justify-center text-white transition-all duration-200 hover:border-white/50 hover:scale-105 ${color}`}
+                  className={`flex items-center gap-2 border border-gray-600 rounded-full px-4 py-2 text-white transition-all duration-200 hover:border-white/50 hover:scale-105 ${color}`}
                 >
                   <Icon className="text-lg" />
+                  <span>{label}</span>
                 </a>
               ))}
             </div>
