@@ -2,11 +2,12 @@ import React, { useMemo } from 'react';
 import { motion } from 'framer-motion';
 import {
   FaInstagram, FaGithub, FaLinkedinIn, FaEnvelope, FaPhone, FaMapMarkerAlt,
-  FaHeart, FaCode, FaRocket, FaArrowUp, FaCoffee, FaMagic
+  FaHeart, FaCode, FaRocket, FaArrowUp, FaCoffee, FaMagic, FaExternalLinkAlt,
+  FaStar, FaFire, FaLightbulb
 } from 'react-icons/fa';
 
 const Footer = () => {
-  const { quickLinks, socialLinks } = useMemo(() => ({
+  const { quickLinks, socialLinks, techStack } = useMemo(() => ({
     quickLinks: [
       { name: 'About', href: '#about' },
       { name: 'Skills', href: '#skills' },
@@ -19,21 +20,29 @@ const Footer = () => {
       {
         icon: FaInstagram,
         href: "https://www.instagram.com/",
-        color: "from-pink-500 to-purple-500",
-        hoverColor: "hover:shadow-pink-500/50"
+        label: "Instagram",
+        gradient: "from-pink-500/20 to-purple-500/20"
       },
       {
         icon: FaGithub,
         href: "https://github.com/VishalXDev",
-        color: "from-gray-500 to-gray-700",
-        hoverColor: "hover:shadow-gray-500/50"
+        label: "GitHub",
+        gradient: "from-gray-400/20 to-gray-600/20"
       },
       {
         icon: FaLinkedinIn,
         href: "https://www.linkedin.com/in/vishal-dwivedy",
-        color: "from-blue-500 to-blue-600",
-        hoverColor: "hover:shadow-blue-500/50"
+        label: "LinkedIn",
+        gradient: "from-blue-500/20 to-blue-600/20"
       }
+    ],
+    techStack: [
+      { name: 'React', color: 'from-blue-500/10 to-blue-600/10', icon: '⚛️' },
+      { name: 'Node.js', color: 'from-green-500/10 to-emerald-600/10', icon: '🚀' },
+      { name: 'Python', color: 'from-yellow-500/10 to-orange-500/10', icon: '🐍' },
+      { name: 'JavaScript', color: 'from-yellow-400/10 to-yellow-500/10', icon: '⚡' },
+      { name: 'MongoDB', color: 'from-green-500/10 to-green-600/10', icon: '🍃' },
+      { name: 'Express', color: 'from-gray-500/10 to-gray-600/10', icon: '🔧' }
     ]
   }), []);
 
@@ -41,118 +50,262 @@ const Footer = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
-  const fadeInUp = {
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.1,
+        delayChildren: 0.2
+      }
+    }
+  };
+
+  const itemVariants = {
     hidden: { opacity: 0, y: 20 },
-    visible: { opacity: 1, y: 0, transition: { type: 'spring', stiffness: 100, damping: 20 } }
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        type: 'spring',
+        stiffness: 100,
+        damping: 15
+      }
+    }
   };
 
   return (
-    <footer className="bg-gradient-to-br from-gray-900 via-purple-900/20 to-blue-900/30 text-white relative overflow-hidden">
-      <div className="absolute inset-0 pointer-events-none z-0">
-        <motion.div
-          animate={{ scale: [1, 1.1, 1], rotate: [0, 180] }}
-          transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-          className="absolute w-40 h-40 bg-gradient-to-br from-purple-500/10 to-pink-500/10 rounded-full blur-3xl top-0 right-0"
+    <footer className="relative overflow-hidden bg-background">
+      {/* Background matching Hero theme */}
+      <div className="absolute inset-0">
+        {/* Primary gradient overlay */}
+        <div className="absolute inset-0 bg-gradient-to-br from-background via-surface to-background opacity-80" />
+
+        {/* Grid pattern */}
+        <div
+          className="absolute inset-0 opacity-[0.03]"
+          style={{
+            backgroundImage: `url("data:image/svg+xml,%3csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3e%3cg fill='none' fill-rule='evenodd'%3e%3cg fill='%23ffffff' fill-opacity='1'%3e%3ccircle cx='7' cy='7' r='1'/%3e%3c/g%3e%3c/g%3e%3c/svg%3e")`,
+          }}
         />
+
+        {/* Subtle glow effects */}
+        <div className="absolute top-1/4 right-1/4 w-96 h-96 bg-blue-500/3 rounded-full blur-3xl" />
+        <div className="absolute bottom-1/4 left-1/4 w-96 h-96 bg-purple-500/3 rounded-full blur-3xl" />
       </div>
 
-      <div className="relative z-10 container mx-auto px-6 py-12">
+      <div className="relative z-10 max-w-7xl mx-auto px-6 py-16">
         <motion.div
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true }}
-          variants={{
-            visible: { transition: { staggerChildren: 0.1 } }
-          }}
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8"
+          viewport={{ once: true, margin: "-100px" }}
+          variants={containerVariants}
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12"
         >
-          {/* Brand */}
-          <motion.div variants={fadeInUp} className="lg:col-span-2">
-            <h2 className="text-3xl font-bold bg-gradient-to-r from-purple-400 via-pink-400 to-blue-400 bg-clip-text text-transparent mb-2">Vishal Dwivedy</h2>
-            <div className="h-1 w-2/3 bg-gradient-to-r from-purple-500 to-blue-500 rounded-full mb-4" />
-            <p className="text-gray-300 mb-4">Crafting digital experiences that inspire and innovate. Passionate about turning ideas into reality through code.</p>
-            <div className="space-y-2 text-gray-300 text-sm">
-              <div className="flex items-center gap-2"><FaEnvelope /> Vishaldwidy@gmail.com</div>
-              <div className="flex items-center gap-2"><FaPhone /> +91 7004212369</div>
-              <div className="flex items-center gap-2"><FaMapMarkerAlt /> Chandigarh, India</div>
+          {/* Brand Section */}
+          <motion.div variants={itemVariants} className="lg:col-span-2 space-y-6">
+            <div className="space-y-4">
+              <div className="flex items-center gap-4">
+                <motion.div 
+                  className="relative w-12 h-12 rounded-2xl bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center shadow-lg"
+                  whileHover={{ scale: 1.1, rotate: 5 }}
+                  transition={{ duration: 0.3 }}
+                >
+                  <FaCode className="text-white text-xl" />
+                </motion.div>
+                <div>
+                  <h2 className="text-3xl lg:text-4xl font-bold text-foreground">
+                    Vishal Dwivedy
+                  </h2>
+                  <div className="flex items-center gap-2 mt-1">
+                    <div className="w-2 h-2 bg-emerald-400 rounded-full shadow-sm" />
+                    <span className="text-sm text-muted font-medium">Full-Stack Developer</span>
+                  </div>
+                </div>
+              </div>
+              <div className="h-0.5 w-32 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full"></div>
+            </div>
+            
+            <p className="text-muted text-base leading-relaxed max-w-md">
+              Crafting exceptional digital experiences through innovative code and thoughtful design. 
+              Passionate about building solutions that make a difference in the digital world.
+            </p>
+            
+            <div className="space-y-4">
+              {[
+                { icon: FaEnvelope, text: 'Vishaldwidy@gmail.com', href: 'mailto:Vishaldwidy@gmail.com' },
+                { icon: FaPhone, text: '+91 7004212369', href: 'tel:+917004212369' },
+                { icon: FaMapMarkerAlt, text: 'Chandigarh, India', href: null }
+              ].map(({ icon: Icon, text, href }, index) => (
+                <motion.div 
+                  key={index} 
+                  className="flex items-center gap-4 text-muted group cursor-pointer"
+                  whileHover={{ x: 10 }}
+                >
+                  <div className="glass-card w-10 h-10 rounded-xl flex items-center justify-center">
+                    <Icon className="text-foreground/60 text-sm" />
+                  </div>
+                  {href ? (
+                    <a href={href} className="hover:text-foreground transition-colors font-medium">{text}</a>
+                  ) : (
+                    <span className="group-hover:text-foreground transition-colors font-medium">{text}</span>
+                  )}
+                </motion.div>
+              ))}
             </div>
           </motion.div>
 
           {/* Quick Links */}
-          <motion.div variants={fadeInUp}>
-            <h3 className="text-lg font-semibold mb-4 flex items-center gap-2"><FaRocket className="text-purple-400" /> Quick Links</h3>
-            <ul className="space-y-2">
-              {quickLinks.map(({ name, href, external }, i) => (
-                <li key={i}>
+          <motion.div variants={itemVariants} className="space-y-6">
+            <div className="flex items-center gap-3">
+              <div className="glass-card w-10 h-10 rounded-xl flex items-center justify-center">
+                <FaRocket className="text-foreground/60 text-sm" />
+              </div>
+              <h3 className="text-xl font-bold text-foreground">Quick Links</h3>
+            </div>
+            
+            <ul className="space-y-3">
+              {quickLinks.map(({ name, href, external }, index) => (
+                <motion.li key={index} whileHover={{ x: 10 }}>
                   <a
                     href={href}
                     target={external ? "_blank" : "_self"}
                     rel={external ? "noopener noreferrer" : undefined}
-                    className="text-gray-300 hover:text-purple-400 transition-all"
+                    className="group flex items-center gap-3 text-muted hover:text-foreground transition-all duration-300 py-2 px-3 rounded-lg hover:bg-surface/50"
                   >
-                    {name}
+                    <div className="w-2 h-2 bg-blue-500 rounded-full group-hover:scale-150 transition-all"></div>
+                    <span className="font-medium">{name}</span>
+                    {external && (
+                      <FaExternalLinkAlt className="text-xs opacity-0 group-hover:opacity-100 transition-all ml-auto" />
+                    )}
                   </a>
-                </li>
+                </motion.li>
               ))}
             </ul>
           </motion.div>
 
           {/* Tech Stack */}
-          <motion.div variants={fadeInUp}>
-            <h3 className="text-lg font-semibold mb-4 flex items-center gap-2"><FaCode className="text-blue-400" /> Technologies</h3>
-            <div className="flex flex-wrap gap-2">
-              {['React', 'Node.js', 'Python', 'JavaScript', 'MongoDB', 'Express'].map((tech, i) => (
-                <span key={i} className="text-xs px-3 py-1 border rounded-full border-purple-500/30 text-purple-300 bg-purple-500/10 hover:scale-105 transition-all">{tech}</span>
+          <motion.div variants={itemVariants} className="space-y-6">
+            <div className="flex items-center gap-3">
+              <div className="glass-card w-10 h-10 rounded-xl flex items-center justify-center">
+                <FaCode className="text-foreground/60 text-sm" />
+              </div>
+              <h3 className="text-xl font-bold text-foreground">Technologies</h3>
+            </div>
+            
+            <div className="grid grid-cols-2 gap-3">
+              {techStack.map(({ name, color, icon }, index) => (
+                <motion.div
+                  key={index}
+                  whileHover={{ scale: 1.05, y: -5 }}
+                  className="glass-card p-3 rounded-xl hover:bg-surface/80 transition-all duration-300 cursor-pointer group"
+                >
+                  <div className="flex items-center justify-between">
+                    <span className="text-sm font-bold text-foreground">{name}</span>
+                    <span className="text-lg opacity-60 group-hover:opacity-100 transition-opacity">{icon}</span>
+                  </div>
+                </motion.div>
               ))}
             </div>
-            <div className="mt-4 text-gray-400 text-sm space-y-2">
-              <div className="flex items-center gap-2"><FaCoffee className="text-yellow-400" /> Powered by ∞ cups of coffee</div>
-              <div className="flex items-center gap-2"><FaMagic className="text-purple-400" /> Turning bugs into features since 2022</div>
+            
+            <div className="space-y-3 pt-4">
+              <motion.div 
+                className="glass-badge px-3 py-2 text-sm text-foreground/80 rounded-lg border border-border/50"
+                animate={{ scale: [1, 1.02, 1] }}
+                transition={{ duration: 3, repeat: Infinity }}
+              >
+                <div className="flex items-center gap-2">
+                  <FaCoffee className="text-amber-400" />
+                  <span className="font-medium">Powered by endless coffee</span>
+                </div>
+              </motion.div>
+              
+              <motion.div 
+                className="glass-badge px-3 py-2 text-sm text-foreground/80 rounded-lg border border-border/50"
+                animate={{ scale: [1, 1.02, 1] }}
+                transition={{ duration: 3, repeat: Infinity, delay: 1 }}
+              >
+                <div className="flex items-center gap-2">
+                  <div className="w-2 h-2 bg-emerald-400 rounded-full animate-pulse" />
+                  <span className="font-medium">Always learning & building</span>
+                </div>
+              </motion.div>
             </div>
           </motion.div>
         </motion.div>
 
-        {/* Social + Scroll */}
-        <motion.div variants={fadeInUp} className="mt-12 text-center">
-          <h3 className="text-lg font-semibold mb-4">Let's Connect & Create Amazing Things Together</h3>
-          <div className="flex justify-center gap-4 mb-6">
-            {socialLinks.map(({ icon: Icon, href, color, hoverColor }, i) => (
-              <motion.a
-                key={i}
-                href={href}
-                target="_blank"
-                rel="noopener noreferrer"
-                whileHover={{ scale: 1.1, y: -3 }}
+        {/* Social Links & Scroll to Top */}
+        <motion.div
+          variants={itemVariants}
+          className="mt-16 pt-8 border-t border-border/50"
+        >
+          <div className="text-center space-y-8">
+            <div className="space-y-4">
+              <h3 className="text-2xl font-bold text-foreground">
+                Let's Connect & Create Together
+              </h3>
+              <p className="text-muted max-w-md mx-auto text-lg">
+                Always open to discussing new opportunities and collaborations
+              </p>
+            </div>
+            
+            <div className="flex justify-center items-center gap-6">
+              {socialLinks.map(({ icon: Icon, href, label, gradient }, index) => (
+                <motion.a
+                  key={index}
+                  href={href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={label}
+                  whileHover={{ scale: 1.1, y: -5 }}
+                  whileTap={{ scale: 0.95 }}
+                  className="glass-card w-16 h-16 rounded-2xl flex items-center justify-center group transition-all duration-300 hover:bg-surface/80"
+                >
+                  <Icon className="text-foreground/60 text-2xl group-hover:text-foreground transition-colors" />
+                </motion.a>
+              ))}
+              
+              <motion.button
+                onClick={scrollToTop}
+                whileHover={{ scale: 1.1, y: -5 }}
                 whileTap={{ scale: 0.95 }}
-                className={`group w-12 h-12 rounded-full flex items-center justify-center border border-gray-600 hover:border-white/50 ${hoverColor} transition-all relative`}
+                className="ml-6 btn-primary w-16 h-16 rounded-2xl flex items-center justify-center group"
+                aria-label="Scroll to top"
               >
-                <Icon className="text-white text-lg z-10" />
-                <div className={`absolute inset-0 rounded-full opacity-0 group-hover:opacity-100 transition-opacity bg-gradient-to-br ${color}`} />
-              </motion.a>
-            ))}
+                <FaArrowUp className="text-xl" />
+              </motion.button>
+            </div>
           </div>
-          <button
-            onClick={scrollToTop}
-            className="w-10 h-10 rounded-full bg-gradient-to-r from-purple-600 to-blue-600 text-white flex items-center justify-center hover:shadow-lg transition-all"
-            aria-label="Scroll to top"
-          >
-            <FaArrowUp />
-          </button>
         </motion.div>
       </div>
 
-      <div className="border-t border-gray-700/50 py-4 text-sm text-gray-400 text-center">
-        <div className="container mx-auto px-4 flex flex-col md:flex-row justify-between items-center gap-2">
-          <div className="flex items-center gap-2">
-            <span>© {new Date().getFullYear()} Made with</span>
-            <FaHeart className="text-red-500" />
-            <span>by Vishal Dwivedy</span>
-          </div>
-          <div className="bg-gradient-to-r from-purple-400 to-blue-400 bg-clip-text text-transparent">
-            Designed to Inspire • Built to Perform
+      {/* Enhanced Copyright */}
+      <div className="border-t border-border/50 bg-surface/50 backdrop-blur-sm">
+        <div className="max-w-7xl mx-auto px-6 py-8">
+          <div className="flex flex-col md:flex-row justify-between items-center gap-6 text-sm">
+            <div className="flex items-center gap-2 text-muted">
+              <span>© {new Date().getFullYear()} Made with</span>
+              <motion.div
+                animate={{ 
+                  scale: [1, 1.2, 1]
+                }}
+                transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+              >
+                <FaHeart className="text-red-400 text-lg" />
+              </motion.div>
+              <span>by <strong className="text-transparent bg-gradient-to-r from-blue-500 to-purple-600 bg-clip-text">Vishal Dwivedy</strong></span>
+            </div>
+            <div className="flex items-center gap-4">
+              <span className="text-muted font-medium">
+                Designed to Inspire • Built to Perform
+              </span>
+            </div>
           </div>
         </div>
       </div>
+
+      {/* Bottom fade */}
+      <div className="absolute top-0 left-0 right-0 h-24 bg-gradient-to-b from-background to-transparent pointer-events-none" />
     </footer>
   );
 };

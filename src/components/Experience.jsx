@@ -1,6 +1,18 @@
+// Experience.jsx - Vercel Inspired Theme
 import React, { useState, useMemo } from 'react';
 import { motion } from 'framer-motion';
-import { FaBriefcase, FaMapMarkerAlt, FaCalendarAlt, FaCode, FaChartLine, FaUsers, FaServer, FaCog } from 'react-icons/fa';
+import { 
+  FaBriefcase, 
+  FaMapMarkerAlt, 
+  FaCalendarAlt, 
+  FaCode, 
+  FaChartLine, 
+  FaUsers, 
+  FaServer, 
+  FaCog,
+  FaArrowRight,
+  FaCheckCircle
+} from 'react-icons/fa';
 
 // Optimized animation variants
 const containerVariants = {
@@ -8,19 +20,19 @@ const containerVariants = {
   visible: {
     opacity: 1,
     transition: {
-      staggerChildren: 0.03,
-      delayChildren: 0.1
+      staggerChildren: 0.1,
+      delayChildren: 0.2
     }
   }
 };
 
 const itemVariants = {
-  hidden: { opacity: 0, y: 15 },
+  hidden: { opacity: 0, y: 20 },
   visible: {
     opacity: 1,
     y: 0,
     transition: {
-      duration: 0.3,
+      duration: 0.5,
       ease: "easeOut"
     }
   }
@@ -46,9 +58,8 @@ const Experience = () => {
           'Implemented performance optimizations that reduced page load times by 30% across key user flows.'
         ],
         technologies: ['React.js', 'Tailwind CSS', 'JavaScript', 'REST APIs', 'Axios', 'Git', 'Agile Methodology', 'Responsive Design'],
-        color: 'from-blue-500 to-cyan-500',
-        bgColor: 'from-blue-500/10 to-cyan-500/10',
-        borderGlow: 'shadow-[0_0_20px_rgba(59,130,246,0.3),0_0_40px_rgba(6,182,212,0.2)]',
+        gradient: 'from-blue-500 to-cyan-500',
+        bgGradient: 'from-blue-500/5 to-cyan-500/5',
         icon: <FaBriefcase />
       },
       {
@@ -65,9 +76,8 @@ const Experience = () => {
           'Specialized in creating high-converting landing pages with focus on performance optimization and accessibility.'
         ],
         technologies: ['React.js', 'Tailwind CSS', 'JavaScript', 'REST APIs', 'Axios', 'Git', 'Agile Methodology', 'Responsive Design'],
-        color: 'from-purple-500 to-pink-500',
-        bgColor: 'from-purple-500/10 to-pink-500/10',
-        borderGlow: 'shadow-[0_0_20px_rgba(168,85,247,0.3),0_0_40px_rgba(236,72,153,0.2)]',
+        gradient: 'from-purple-500 to-pink-500',
+        bgGradient: 'from-purple-500/5 to-pink-500/5',
         icon: <FaCode />
       }
     ],
@@ -77,71 +87,59 @@ const Experience = () => {
         title: 'User Engagement Boost',
         description: 'Improved user engagement by 25% through responsive design and optimized user interface components.',
         impact: '25% increase',
-        color: 'from-emerald-400 to-teal-500'
+        gradient: 'from-emerald-500 to-teal-500'
       },
       {
         icon: <FaCode />,
         title: 'API Integration Excellence',
         description: 'Successfully integrated multiple RESTful APIs ensuring seamless data flow and real-time synchronization.',
         impact: '100% success rate',
-        color: 'from-purple-400 to-pink-500'
+        gradient: 'from-purple-500 to-pink-500'
       },
       {
         icon: <FaUsers />,
         title: 'Agile Collaboration',
         description: 'Collaborated effectively in cross-functional teams, maintaining high code quality through rigorous testing and review processes.',
         impact: 'Team efficiency',
-        color: 'from-orange-400 to-red-500'
+        gradient: 'from-orange-500 to-red-500'
       },
       {
         icon: <FaServer />,
         title: 'Performance Optimization',
         description: 'Reduced page load times by 30% through various frontend optimizations and best practices.',
         impact: '30% faster',
-        color: 'from-indigo-400 to-blue-500'
+        gradient: 'from-indigo-500 to-blue-500'
       }
     ],
     stats: [
-      { label: 'User Engagement', value: '25%↑', icon: <FaChartLine /> },
-      { label: 'Projects Completed', value: '5+', icon: <FaCode /> },
-      { label: 'APIs Integrated', value: '10+', icon: <FaServer /> },
-      { label: 'Performance Gain', value: '30%↑', icon: <FaCog /> }
+      { label: 'User Engagement', value: '25%↑', icon: <FaChartLine />, gradient: 'from-blue-500 to-cyan-500' },
+      { label: 'Projects Completed', value: '5+', icon: <FaCode />, gradient: 'from-emerald-500 to-green-500' },
+      { label: 'APIs Integrated', value: '10+', icon: <FaServer />, gradient: 'from-purple-500 to-violet-500' },
+      { label: 'Performance Gain', value: '30%↑', icon: <FaCog />, gradient: 'from-orange-500 to-amber-500' }
     ]
   }), []);
 
-  // Simplified floating elements for better performance
-  const floatingElements = useMemo(() =>
-    Array.from({ length: 4 }, (_, i) => (
-      <motion.div
-        key={i}
-        className="absolute w-1 h-1 bg-gradient-to-r from-blue-400/20 to-purple-400/20 rounded-full"
-        initial={{ opacity: 0.1 }}
-        animate={{
-          opacity: [0.1, 0.3, 0.1],
-          scale: [0.5, 1.2, 0.5]
-        }}
-        transition={{
-          duration: 4 + Math.random() * 2,
-          repeat: Infinity,
-          repeatType: "reverse",
-          delay: Math.random() * 2
-        }}
-        style={{
-          left: `${20 + Math.random() * 60}%`,
-          top: `${20 + Math.random() * 60}%`
-        }}
-      />
-    )), []);
-
   return (
-    <section id="experience" className="relative min-h-screen py-20 bg-gradient-to-br from-slate-900 via-blue-900/10 to-slate-900 overflow-hidden">
-      {/* Optimized background */}
-      <div className="absolute inset-0">
-        <div className="absolute inset-0 bg-gradient-to-br from-blue-900/5 via-transparent to-purple-900/5" />
-        {floatingElements}
+    <section id="experience" className="relative min-h-screen py-24 overflow-hidden">
+      {/* Background with Vercel-style gradients */}
+      <div className="absolute inset-0 bg-background">
+        {/* Primary gradient overlay */}
+        <div className="absolute inset-0 bg-gradient-to-br from-background via-surface to-background opacity-80" />
+        
+        {/* Grid pattern */}
+        <div 
+          className="absolute inset-0 opacity-[0.02]"
+          style={{
+            backgroundImage: `url("data:image/svg+xml,%3csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3e%3cg fill='none' fill-rule='evenodd'%3e%3cg fill='%23ffffff' fill-opacity='1'%3e%3ccircle cx='7' cy='7' r='1'/%3e%3c/g%3e%3c/g%3e%3c/svg%3e")`,
+          }}
+        />
+        
+        {/* Subtle glow effects */}
+        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-blue-500/3 rounded-full blur-3xl" />
+        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-purple-500/3 rounded-full blur-3xl" />
       </div>
 
-      <div className="relative z-10 container mx-auto px-6 lg:px-8">
+      <div className="relative z-10 container mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header Section */}
         <motion.div
           variants={containerVariants}
@@ -151,14 +149,21 @@ const Experience = () => {
           className="text-center mb-16"
         >
           <motion.h2
-            className="text-5xl lg:text-7xl font-bold bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 bg-clip-text text-transparent mb-6"
+            className="text-4xl md:text-5xl lg:text-6xl font-bold text-foreground mb-4"
             variants={itemVariants}
           >
-            Professional Journey
+            Professional{" "}
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-purple-600">
+              Journey
+            </span>
           </motion.h2>
+          <motion.div
+            variants={itemVariants}
+            className="w-20 h-1 bg-gradient-to-r from-blue-500 to-purple-600 mx-auto rounded-full mb-6"
+          />
           <motion.p
             variants={itemVariants}
-            className="text-xl text-slate-300 max-w-3xl mx-auto leading-relaxed"
+            className="text-lg text-muted max-w-3xl mx-auto leading-relaxed"
           >
             Crafting exceptional digital experiences through innovative development and collaborative excellence
           </motion.p>
@@ -176,92 +181,109 @@ const Experience = () => {
             <motion.div
               key={index}
               variants={itemVariants}
-              className="relative bg-slate-800/50 backdrop-blur-xl border border-slate-700/50 rounded-2xl p-4 text-center shadow-[0_0_15px_rgba(59,130,246,0.2),0_0_30px_rgba(168,85,247,0.1)] hover:shadow-[0_0_25px_rgba(59,130,246,0.3),0_0_50px_rgba(168,85,247,0.2)] transition-all duration-300"
+              className="glass-card p-4 text-center group hover:glass-card-hover transition-all duration-300"
               whileHover={{ y: -5, scale: 1.02 }}
             >
               <div
-                className="w-10 h-10 bg-gradient-to-r from-blue-500 to-purple-500 rounded-xl flex items-center justify-center mx-auto mb-3 text-white text-lg"
+                className={`w-12 h-12 bg-gradient-to-r ${stat.gradient} rounded-xl flex items-center justify-center mx-auto mb-3 text-white shadow-lg group-hover:scale-110 transition-transform`}
                 aria-label={stat.label}
               >
                 {stat.icon}
               </div>
-              <div className="text-2xl font-bold text-white mb-1">{stat.value}</div>
-              <div className="text-slate-300 text-sm">{stat.label}</div>
+              <div className="text-xl lg:text-2xl font-bold text-foreground mb-1">{stat.value}</div>
+              <div className="text-muted text-sm">{stat.label}</div>
             </motion.div>
           ))}
         </motion.div>
 
-        {/* Experience Selection Buttons */}
-        <div className="flex justify-center mb-8 space-x-4">
-          {experiences.map((exp, idx) => (
-            <button
-              key={idx}
-              onClick={() => setSelectedExperience(idx)}
-              className={`px-4 py-2 rounded-full text-sm font-semibold transition-all duration-300 ${
-                selectedExperience === idx 
-                  ? 'bg-gradient-to-r from-blue-500 to-purple-500 text-white shadow-[0_0_20px_rgba(59,130,246,0.4)]' 
-                  : 'bg-slate-700/50 text-slate-300 hover:bg-gradient-to-r hover:from-blue-600 hover:to-purple-600 hover:text-white border border-slate-600/50'
-              }`}
-              aria-pressed={selectedExperience === idx}
-              aria-label={`Select experience at ${exp.company}`}
-            >
-              {exp.title}
-            </button>
-          ))}
+        {/* Experience Selection */}
+        <div className="flex flex-col sm:flex-row justify-center items-center gap-3 mb-12">
+          <span className="text-sm text-muted mb-2 sm:mb-0">Select experience:</span>
+          <div className="flex flex-wrap justify-center gap-3">
+            {experiences.map((exp, idx) => (
+              <button
+                key={idx}
+                onClick={() => setSelectedExperience(idx)}
+                className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 border ${
+                  selectedExperience === idx 
+                    ? 'bg-gradient-to-r from-blue-500 to-purple-600 text-white border-transparent shadow-lg' 
+                    : 'bg-surface/50 text-foreground/80 border-border hover:bg-surface hover:border-border-hover'
+                }`}
+                aria-pressed={selectedExperience === idx}
+                aria-label={`Select experience at ${exp.company}`}
+              >
+                {exp.type}
+                <FaArrowRight className={`inline ml-2 text-xs transition-transform ${selectedExperience === idx ? 'rotate-90' : ''}`} />
+              </button>
+            ))}
+          </div>
         </div>
 
         {/* Selected Experience Details */}
         <motion.div
           variants={itemVariants}
           key={selectedExperience}
-          className="max-w-4xl mx-auto"
+          className="max-w-4xl mx-auto mb-20"
         >
           {experiences[selectedExperience] && (
-            <div className={`relative bg-gradient-to-br ${experiences[selectedExperience].bgColor} backdrop-blur-xl border border-slate-700/50 rounded-2xl p-6 ${experiences[selectedExperience].borderGlow} hover:shadow-[0_0_30px_rgba(59,130,246,0.4),0_0_60px_rgba(6,182,212,0.3)] transition-all duration-500`}>
-              <div className="flex items-start gap-4 mb-6">
-                <div className={`w-12 h-12 bg-gradient-to-r ${experiences[selectedExperience].color} rounded-xl flex items-center justify-center shadow-lg`}>
-                  <span className="text-white text-lg">{experiences[selectedExperience].icon}</span>
-                </div>
-                <div className="flex-1">
-                  <h3 className="text-2xl font-bold text-white mb-2">{experiences[selectedExperience].title}</h3>
-                  <p className={`text-lg font-semibold bg-gradient-to-r ${experiences[selectedExperience].color} bg-clip-text text-transparent mb-2`}>
-                    {experiences[selectedExperience].company}
-                  </p>
-                  <div className="flex flex-wrap gap-4 text-slate-300 text-sm">
-                    <span className="flex items-center gap-2">
-                      <FaMapMarkerAlt className="text-blue-400" />
-                      {experiences[selectedExperience].location}
-                    </span>
-                    <span className="flex items-center gap-2">
-                      <FaCalendarAlt className="text-purple-400" />
-                      {experiences[selectedExperience].period}
-                    </span>
-                    <span className="flex items-center gap-2">
-                      <FaCog className="text-green-400" />
-                      {experiences[selectedExperience].type}
-                    </span>
+            <div className="glass-card p-6 lg:p-8 relative overflow-hidden group">
+              {/* Subtle background gradient */}
+              <div className={`absolute inset-0 bg-gradient-to-br ${experiences[selectedExperience].bgGradient} opacity-50`} />
+              
+              <div className="relative">
+                {/* Header */}
+                <div className="flex flex-col sm:flex-row sm:items-start gap-4 mb-6">
+                  <div className={`w-16 h-16 bg-gradient-to-r ${experiences[selectedExperience].gradient} rounded-xl flex items-center justify-center shadow-lg flex-shrink-0 group-hover:scale-110 transition-transform`}>
+                    <span className="text-white text-xl">{experiences[selectedExperience].icon}</span>
+                  </div>
+                  <div className="flex-1">
+                    <h3 className="text-2xl lg:text-3xl font-bold text-foreground mb-2">
+                      {experiences[selectedExperience].title}
+                    </h3>
+                    <p className={`text-lg font-semibold bg-gradient-to-r ${experiences[selectedExperience].gradient} bg-clip-text text-transparent mb-3`}>
+                      {experiences[selectedExperience].company}
+                    </p>
+                    <div className="flex flex-wrap gap-4 text-muted text-sm">
+                      <span className="flex items-center gap-2">
+                        <FaMapMarkerAlt className="text-blue-400" />
+                        {experiences[selectedExperience].location}
+                      </span>
+                      <span className="flex items-center gap-2">
+                        <FaCalendarAlt className="text-purple-400" />
+                        {experiences[selectedExperience].period}
+                      </span>
+                      <span className="flex items-center gap-2 px-2 py-1 bg-surface/50 rounded-full">
+                        <FaCog className="text-emerald-400" />
+                        {experiences[selectedExperience].type}
+                      </span>
+                    </div>
                   </div>
                 </div>
-              </div>
 
-              <div className="space-y-4 mb-6">
-                {experiences[selectedExperience].description.map((desc, idx) => (
-                  <div key={idx} className="flex items-start gap-3">
-                    <div className="w-2 h-2 bg-gradient-to-r from-blue-400 to-purple-400 rounded-full mt-2 flex-shrink-0"></div>
-                    <p className="text-slate-300 text-sm leading-relaxed">{desc}</p>
+                {/* Description */}
+                <div className="space-y-3 mb-6">
+                  {experiences[selectedExperience].description.map((desc, idx) => (
+                    <div key={idx} className="flex items-start gap-3 group/item">
+                      <FaCheckCircle className="text-emerald-400 mt-1 flex-shrink-0 group-hover/item:scale-110 transition-transform" />
+                      <p className="text-muted text-sm lg:text-base leading-relaxed">{desc}</p>
+                    </div>
+                  ))}
+                </div>
+
+                {/* Technologies */}
+                <div>
+                  <h4 className="text-sm font-semibold text-foreground/80 mb-3">Technologies & Tools:</h4>
+                  <div className="flex flex-wrap gap-2">
+                    {experiences[selectedExperience].technologies.map((tech, idx) => (
+                      <span
+                        key={idx}
+                        className="px-3 py-1.5 bg-surface/70 border border-border text-foreground/80 text-xs font-medium rounded-full hover:bg-surface hover:border-border-hover transition-all duration-200"
+                      >
+                        {tech}
+                      </span>
+                    ))}
                   </div>
-                ))}
-              </div>
-
-              <div className="flex flex-wrap gap-2">
-                {experiences[selectedExperience].technologies.map((tech, idx) => (
-                  <span
-                    key={idx}
-                    className="px-3 py-1 bg-slate-700/70 text-slate-300 text-xs rounded-full border border-slate-600/50 hover:bg-slate-600/70 hover:border-blue-400/50 transition-all duration-200"
-                  >
-                    {tech}
-                  </span>
-                ))}
+                </div>
               </div>
             </div>
           )}
@@ -273,11 +295,16 @@ const Experience = () => {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
-          className="max-w-6xl mx-auto mt-16"
+          className="max-w-6xl mx-auto"
         >
-          <motion.div variants={itemVariants} className="text-center mb-10">
-            <h3 className="text-3xl lg:text-4xl font-bold text-white mb-3">Key Achievements</h3>
-            <div className="w-24 h-1 bg-gradient-to-r from-purple-500 to-pink-500 mx-auto rounded-full" />
+          <motion.div variants={itemVariants} className="text-center mb-12">
+            <h3 className="text-3xl lg:text-4xl font-bold text-foreground mb-4">
+              Key{" "}
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-500 to-teal-500">
+                Achievements
+              </span>
+            </h3>
+            <div className="w-20 h-1 bg-gradient-to-r from-emerald-500 to-teal-500 mx-auto rounded-full" />
           </motion.div>
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
@@ -285,24 +312,43 @@ const Experience = () => {
               <motion.div
                 key={index}
                 variants={itemVariants}
-                className="relative bg-slate-800/50 backdrop-blur-md border border-slate-700/50 rounded-xl p-5 shadow-[0_0_15px_rgba(147,51,234,0.2),0_0_30px_rgba(236,72,153,0.1)] hover:shadow-[0_0_25px_rgba(147,51,234,0.3),0_0_50px_rgba(236,72,153,0.2)] transition-all duration-300"
+                className="glass-card p-6 group hover:glass-card-hover transition-all duration-300 relative overflow-hidden"
                 whileHover={{ y: -3, scale: 1.02 }}
               >
-                <div className="flex items-start gap-4">
-                  <div className={`w-12 h-12 bg-gradient-to-r ${achievement.color} rounded-lg flex items-center justify-center shadow-lg flex-shrink-0`}>
-                    <span className="text-white text-lg">{achievement.icon}</span>
+                <div className="relative flex items-start gap-4">
+                  <div className={`w-12 h-12 lg:w-14 lg:h-14 bg-gradient-to-r ${achievement.gradient} rounded-xl flex items-center justify-center shadow-lg flex-shrink-0 group-hover:scale-110 transition-transform`}>
+                    <span className="text-white text-lg lg:text-xl">{achievement.icon}</span>
                   </div>
-                  <div className="flex-1">
-                    <h4 className="text-lg font-bold text-white mb-2">{achievement.title}</h4>
-                    <div className={`inline-block px-3 py-1 bg-gradient-to-r ${achievement.color} text-white text-xs font-semibold rounded-full mb-3`}>
+                  <div className="flex-1 min-w-0">
+                    <h4 className="text-lg lg:text-xl font-bold text-foreground mb-2">
+                      {achievement.title}
+                    </h4>
+                    <div className={`inline-block px-3 py-1 bg-gradient-to-r ${achievement.gradient} text-white text-xs font-semibold rounded-full mb-3 shadow-sm`}>
                       {achievement.impact}
                     </div>
-                    <p className="text-slate-300 text-sm leading-relaxed">{achievement.description}</p>
+                    <p className="text-muted text-sm lg:text-base leading-relaxed">
+                      {achievement.description}
+                    </p>
                   </div>
                 </div>
+
+                {/* Hover gradient overlay */}
+                <div className={`absolute inset-0 bg-gradient-to-br ${achievement.gradient}/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300`} />
               </motion.div>
             ))}
           </div>
+
+          {/* Call to Action */}
+          <motion.div 
+            variants={itemVariants}
+            className="text-center mt-12"
+          >
+            <div className="glass-card p-6 inline-block">
+              <p className="text-muted text-sm lg:text-base">
+                🚀 Ready to bring innovation and excellence to your next project
+              </p>
+            </div>
+          </motion.div>
         </motion.div>
       </div>
     </section>
