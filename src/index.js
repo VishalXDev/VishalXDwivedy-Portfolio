@@ -1,8 +1,8 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import React from "react";
+import ReactDOM from "react-dom/client";
+import "./index.css";
+import App from "./App";
+import reportWebVitals from "./reportWebVitals";
 
 // Lightweight Error Boundary Component
 class ErrorBoundary extends React.Component {
@@ -13,7 +13,7 @@ class ErrorBoundary extends React.Component {
   }
 
   componentDidCatch(error, errorInfo) {
-    console.error('Portfolio Error:', error, errorInfo);
+    console.error("Portfolio Error:", error, errorInfo);
   }
 
   handleReload = () => {
@@ -36,22 +36,22 @@ class ErrorBoundary extends React.Component {
 
 // Performance Monitoring (Lightweight)
 const initPerformanceMonitoring = () => {
-  if (typeof window !== 'undefined' && 'performance' in window) {
+  if (typeof window !== "undefined" && "performance" in window) {
     const trackMetrics = () => {
-      const [navigationEntry] = performance.getEntriesByType('navigation');
+      const [navigationEntry] = performance.getEntriesByType("navigation");
       if (navigationEntry) {
         console.table({
-          'DOM Loaded': `${navigationEntry.domComplete.toFixed(0)}ms`,
-          'Page Load': `${navigationEntry.loadEventEnd.toFixed(0)}ms`,
-          'TTFB': `${navigationEntry.responseStart.toFixed(0)}ms`
+          "DOM Loaded": `${navigationEntry.domComplete.toFixed(0)}ms`,
+          "Page Load": `${navigationEntry.loadEventEnd.toFixed(0)}ms`,
+          TTFB: `${navigationEntry.responseStart.toFixed(0)}ms`,
         });
       }
     };
 
-    if (document.readyState === 'complete') {
+    if (document.readyState === "complete") {
       setTimeout(trackMetrics, 0);
     } else {
-      window.addEventListener('load', trackMetrics, { once: true });
+      window.addEventListener("load", trackMetrics, { once: true });
     }
   }
 };
@@ -60,10 +60,10 @@ const initPerformanceMonitoring = () => {
 const reportWebVitalsOptimized = (onPerfEntry) => {
   if (
     onPerfEntry &&
-    typeof onPerfEntry === 'function' &&
-    process.env.NODE_ENV === 'development'
+    typeof onPerfEntry === "function" &&
+    process.env.NODE_ENV === "development"
   ) {
-    import('web-vitals')
+    import("web-vitals")
       .then(({ getCLS, getFID, getLCP, getFCP, getTTFB }) => {
         getCLS(onPerfEntry);
         getFID(onPerfEntry);
@@ -72,18 +72,18 @@ const reportWebVitalsOptimized = (onPerfEntry) => {
         getTTFB(onPerfEntry);
       })
       .catch(() => {
-        console.log('Web Vitals tracking failed to load');
+        console.log("Web Vitals tracking failed to load");
       });
   }
 };
 
 // Simplified Loading Indicator with ARIA attributes for accessibility
 const addLoadingIndicator = () => {
-  const loader = document.createElement('div');
-  loader.id = 'app-loader';
-  loader.setAttribute('role', 'alert');
-  loader.setAttribute('aria-live', 'polite');
-  loader.setAttribute('aria-busy', 'true');
+  const loader = document.createElement("div");
+  loader.id = "app-loader";
+  loader.setAttribute("role", "alert");
+  loader.setAttribute("aria-live", "polite");
+  loader.setAttribute("aria-busy", "true");
   loader.innerHTML = `
     <div class="loader-content" aria-label="Loading">
       <div class="loader-spinner"></div>
@@ -93,16 +93,16 @@ const addLoadingIndicator = () => {
   document.body.appendChild(loader);
 
   const removeLoader = () => {
-    loader.style.opacity = '0';
-    loader.setAttribute('aria-busy', 'false');
+    loader.style.opacity = "0";
+    loader.setAttribute("aria-busy", "false");
     setTimeout(() => loader.remove(), 300);
   };
 
-  if (document.readyState === 'complete') {
+  if (document.readyState === "complete") {
     setTimeout(removeLoader, 300);
   } else {
     window.addEventListener(
-      'load',
+      "load",
       () => {
         setTimeout(removeLoader, 300);
       },
@@ -112,7 +112,7 @@ const addLoadingIndicator = () => {
 };
 
 // Initialize
-const rootElement = document.getElementById('root');
+const rootElement = document.getElementById("root");
 if (rootElement) {
   // Add loading indicator early
   addLoadingIndicator();
@@ -132,5 +132,5 @@ if (rootElement) {
   // Report web vitals (only logs in dev)
   reportWebVitalsOptimized(console.log);
 } else {
-  console.error('Failed to find the root element');
+  console.error("Failed to find the root element");
 }
