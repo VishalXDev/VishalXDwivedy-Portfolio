@@ -78,7 +78,7 @@ const Projects = () => {
         ],
         github:
           "https://github.com/VishalXDev/Boom-Entertainment-Video-Platform",
-        demo: "https://boom-entertainment.vercel.app/",
+        demo: "https://boom-entertainment-video-platform.vercel.app/",
         icon: "🎥",
         category: "Social Media",
         status: "Production",
