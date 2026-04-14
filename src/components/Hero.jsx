@@ -9,11 +9,6 @@ import React, {
 import {
   FaGithub,
   FaLinkedinIn,
-  FaVolumeUp,
-  FaVolumeMute,
-  FaRocket,
-  FaCode,
-  FaBolt,
   FaEnvelope,
   FaArrowRight,
   FaPlay,

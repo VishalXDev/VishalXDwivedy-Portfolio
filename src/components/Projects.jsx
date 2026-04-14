@@ -7,11 +7,9 @@ import {
   FaCode,
   FaArrowRight,
 } from "react-icons/fa";
-import { useState, useMemo } from "react";
+import { useMemo } from "react";
 
 const Projects = () => {
-  const [hoveredIndex, setHoveredIndex] = useState(null);
-
   const projects = useMemo(
     () => [
       {
@@ -246,8 +244,6 @@ const Projects = () => {
             <motion.div
               key={index}
               variants={itemVariants}
-              onMouseEnter={() => setHoveredIndex(index)}
-              onMouseLeave={() => setHoveredIndex(null)}
               className={`group relative bg-[var(--surface-primary)]/50 backdrop-blur-xl border border-[var(--border-color)] rounded-3xl p-8 transition-all duration-300 hover:border-transparent hover:${project.shadowColor} hover:shadow-2xl`}
             >
               {/* Background Gradient */}

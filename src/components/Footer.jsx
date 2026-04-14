@@ -2,8 +2,7 @@ import React, { useMemo } from 'react';
 import { motion } from 'framer-motion';
 import {
   FaInstagram, FaGithub, FaLinkedinIn, FaEnvelope, FaPhone, FaMapMarkerAlt,
-  FaHeart, FaCode, FaRocket, FaArrowUp, FaCoffee, FaMagic, FaExternalLinkAlt,
-  FaStar, FaFire, FaLightbulb
+  FaHeart, FaCode, FaRocket, FaArrowUp, FaCoffee, FaExternalLinkAlt
 } from 'react-icons/fa';
 
 const Footer = () => {

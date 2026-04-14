@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import {
   AnimatePresence,
   motion,
@@ -99,6 +99,16 @@ function App() {
     return () => window.removeEventListener("mousemove", onMouseMove);
   }, []);
 
+  // Enhanced scroll and set active section
+  const scrollToSection = useCallback((sectionId) => {
+    if (sectionId === activeSection) return;
+    setActiveSection(sectionId);
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  }, [activeSection]);
+
   // Listen for custom navigation events
   useEffect(() => {
     const handleNavigate = (e) => {
@@ -109,17 +119,7 @@ function App() {
     };
     document.addEventListener("navigate", handleNavigate);
     return () => document.removeEventListener("navigate", handleNavigate);
-  }, []);
-
-  // Enhanced scroll and set active section
-  const scrollToSection = (sectionId) => {
-    if (sectionId === activeSection) return;
-    setActiveSection(sectionId);
-    window.scrollTo({
-      top: 0,
-      behavior: "smooth",
-    });
-  };
+  }, [scrollToSection]);
 
   // Vercel-style loading screen
   const LoadingScreen = () => (
