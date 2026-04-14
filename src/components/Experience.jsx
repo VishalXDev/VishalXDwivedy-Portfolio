@@ -47,7 +47,7 @@ const Experience = () => {
       {
         title: 'Software Engineer (SDE I)',
         company: '169Pi Buddhimatrix Pvt Ltd',
-        location: 'India',
+        location: 'Mumbai,India',
         period: 'Aug 2025 – Present',
         duration: 'Current',
         type: 'Full-time',
