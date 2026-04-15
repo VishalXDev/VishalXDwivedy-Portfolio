@@ -14,7 +14,6 @@ import {
   FaPlay,
   FaPause,
   FaDownload,
-  FaHandshake,
 } from "react-icons/fa";
 import { motion as m, useMotionValue, useTransform } from "framer-motion";
 
