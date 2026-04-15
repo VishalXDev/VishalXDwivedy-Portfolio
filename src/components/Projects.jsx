@@ -23,16 +23,22 @@ const Projects = () => {
           "Next.js",
           "Node.js",
           "WebSockets",
-          "OpenAI API"
+          "OpenAI API",
         ],
         keyFeatures: [
           "Real-time prompt testing and response streaming",
           "LLM integration with dynamic workflows",
           "Optimized UI for fast interaction and feedback",
-          "Production-level reliability and debugging"
+          "Production-level reliability and debugging",
         ],
         github: "",
         demo: "",
+        links: [
+          {
+            label: "Playground",
+            url: "https://playground.169pi.ai/dashboard/playground",
+          },
+        ],
         icon: "⚡",
         category: "Production System",
         status: "Live",
@@ -50,17 +56,20 @@ const Projects = () => {
           "Express.js",
           "REST APIs",
           "WebSockets",
-          "MongoDB"
+          "MongoDB",
         ],
         keyFeatures: [
           "Designed scalable API architecture",
           "Handled real-time streaming and integrations",
           "Improved response reliability and performance",
-          "Debugged edge cases in production systems"
+          "Debugged edge cases in production systems",
         ],
         github: "",
         demo: "",
         icon: "🛠️",
+        links: [
+          { label: "Dashboard", url: "https://playground.169pi.ai/dashboard" },
+        ],
         category: "Backend & Systems",
         status: "Production",
         gradient: "from-blue-500 via-indigo-500 to-purple-500",
@@ -72,17 +81,12 @@ const Projects = () => {
           "Upload PDFs and ask anything — AI answers based on document context.",
         longDescription:
           "Built an intelligent document analysis system where users can upload PDFs and interact with them using AI-powered Q&A.",
-        technologies: [
-          "Next.js",
-          "Node.js",
-          "OpenAI",
-          "Vector Search"
-        ],
+        technologies: ["Next.js", "Node.js", "OpenAI", "Vector Search"],
         keyFeatures: [
           "PDF upload and parsing",
           "Context-aware AI question answering",
           "Semantic search with embeddings",
-          "Interactive chat-based UI"
+          "Interactive chat-based UI",
         ],
         github: "https://github.com/VishalXDev",
         demo: "",
@@ -98,18 +102,12 @@ const Projects = () => {
           "Full-featured video platform with uploads, engagement, and monetization features.",
         longDescription:
           "Developed a YouTube-like platform supporting video uploads, interactions, and scalable media handling.",
-        technologies: [
-          "Next.js",
-          "Node.js",
-          "MongoDB",
-          "Cloudinary",
-          "JWT"
-        ],
+        technologies: ["Next.js", "Node.js", "MongoDB", "Cloudinary", "JWT"],
         keyFeatures: [
           "Video upload and streaming",
           "Authentication and user roles",
           "Comment and engagement system",
-          "Cloud-based media handling"
+          "Cloud-based media handling",
         ],
         github:
           "https://github.com/VishalXDev/Boom-Entertainment-Video-Platform",
@@ -126,17 +124,12 @@ const Projects = () => {
           "AI-powered job tracking system with smart insights and automation.",
         longDescription:
           "A full-stack AI application that helps users manage job applications with intelligent insights and recommendations.",
-        technologies: [
-          "React",
-          "Node.js",
-          "MongoDB",
-          "OpenAI API"
-        ],
+        technologies: ["React", "Node.js", "MongoDB", "OpenAI API"],
         keyFeatures: [
           "AI-powered resume insights",
           "Smart job tracking dashboard",
           "Role-based authentication",
-          "Automated recommendations"
+          "Automated recommendations",
         ],
         github: "https://github.com/VishalXDev/Job-Pilot-AI",
         demo: "https://job-pilot-ai.vercel.app/",
@@ -152,17 +145,12 @@ const Projects = () => {
           "Real-time conversational AI with streaming responses and context awareness.",
         longDescription:
           "Built a scalable chatbot system with real-time streaming responses and context-aware interactions.",
-        technologies: [
-          "React",
-          "Node.js",
-          "OpenAI API",
-          "WebSockets"
-        ],
+        technologies: ["React", "Node.js", "OpenAI API", "WebSockets"],
         keyFeatures: [
           "Streaming responses",
           "Context-aware conversations",
           "Optimized response handling",
-          "Real-time UI updates"
+          "Real-time UI updates",
         ],
         github: "https://github.com/VishalXDev",
         demo: "",
@@ -171,9 +159,9 @@ const Projects = () => {
         status: "Completed",
         gradient: "from-green-500 via-emerald-500 to-teal-500",
         shadowColor: "shadow-green-500/25",
-      }
+      },
     ],
-    []
+    [],
   );
 
   const containerVariants = {
@@ -202,7 +190,7 @@ const Projects = () => {
 
   return (
     <section className="py-20 bg-[var(--bg-primary)]" id="projects">
-      <div className="max-w-7xl mx-auto px-6">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -218,15 +206,14 @@ const Projects = () => {
             </span>
           </div>
 
-          <h2 className="text-4xl lg:text-6xl font-bold text-[var(--text-primary)] mb-6">
-            Projects That
-            <br />
-            <span className="text-transparent bg-gradient-to-r from-[var(--accent-primary)] via-[var(--accent-secondary)] to-[var(--accent-primary)] bg-clip-text">
+          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-[var(--text-primary)] mb-6">
+            Projects That{" "}
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-purple-600">
               Make Impact
             </span>
           </h2>
 
-          <p className="text-lg text-[var(--text-secondary)] max-w-2xl mx-auto leading-relaxed">
+          <p className="text-sm sm:text-base lg:text-lg text-[var(--text-secondary)] max-w-2xl mx-auto leading-relaxed">
             A collection of applications I've built, each solving real-world
             problems with modern technologies and thoughtful design.
           </p>
@@ -238,7 +225,7 @@ const Projects = () => {
           whileInView="visible"
           viewport={{ once: true, margin: "-100px" }}
           variants={containerVariants}
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+          className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
         >
           {projects.map((project, index) => (
             <motion.div
@@ -273,7 +260,7 @@ const Projects = () => {
                   {project.title}
                 </h3>
 
-                <p className="text-[var(--text-secondary)] group-hover:text-white/90 text-sm mb-4 transition-colors leading-relaxed">
+                <p className="text-[var(--text-secondary)] group-hover:text-white/90 text-sm sm:text-base mb-4 transition-colors leading-relaxed">
                   {project.description}
                 </p>
 
@@ -304,30 +291,51 @@ const Projects = () => {
 
                 {/* Action Links */}
                 <div className="flex items-center justify-between pt-4 border-t border-[var(--border-color)] group-hover:border-white/20">
-                  <div className="flex items-center gap-4">
-                    <motion.a
-                      href={project.github}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      whileHover={{ scale: 1.1, rotate: 5 }}
-                      whileTap={{ scale: 0.95 }}
-                      className="flex items-center justify-center w-10 h-10 bg-[var(--surface-secondary)] group-hover:bg-white/10 text-[var(--text-secondary)] group-hover:text-white border border-[var(--border-color)] group-hover:border-white/20 rounded-xl transition-all duration-200"
-                      aria-label={`View ${project.title} on GitHub`}
-                    >
-                      <FaGithub className="text-lg" />
-                    </motion.a>
+                  <div className="flex items-center gap-3 flex-wrap">
+                    {project.github && (
+                      <motion.a
+                        href={project.github}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        whileHover={{ scale: 1.1, rotate: 5 }}
+                        whileTap={{ scale: 0.95 }}
+                        className="flex items-center justify-center w-10 h-10 bg-[var(--surface-secondary)] group-hover:bg-white/10 text-[var(--text-secondary)] group-hover:text-white border border-[var(--border-color)] group-hover:border-white/20 rounded-xl transition-all duration-200"
+                        aria-label={`View ${project.title} on GitHub`}
+                      >
+                        <FaGithub className="text-lg" />
+                      </motion.a>
+                    )}
 
-                    <motion.a
-                      href={project.demo}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      whileHover={{ scale: 1.1, rotate: -5 }}
-                      whileTap={{ scale: 0.95 }}
-                      className="flex items-center justify-center w-10 h-10 bg-[var(--surface-secondary)] group-hover:bg-white/10 text-[var(--text-secondary)] group-hover:text-white border border-[var(--border-color)] group-hover:border-white/20 rounded-xl transition-all duration-200"
-                      aria-label={`View ${project.title} live demo`}
-                    >
-                      <FaExternalLinkAlt className="text-lg" />
-                    </motion.a>
+                    {project.demo && (
+                      <motion.a
+                        href={project.demo}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        whileHover={{ scale: 1.1, rotate: -5 }}
+                        whileTap={{ scale: 0.95 }}
+                        className="flex items-center justify-center w-10 h-10 bg-[var(--surface-secondary)] group-hover:bg-white/10 text-[var(--text-secondary)] group-hover:text-white border border-[var(--border-color)] group-hover:border-white/20 rounded-xl transition-all duration-200"
+                        aria-label={`View ${project.title} live demo`}
+                      >
+                        <FaExternalLinkAlt className="text-lg" />
+                      </motion.a>
+                    )}
+
+                    {project.links &&
+                      project.links.map((link, li) => (
+                        <motion.a
+                          key={li}
+                          href={link.url}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          whileHover={{ scale: 1.05 }}
+                          whileTap={{ scale: 0.95 }}
+                          className="flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold bg-[var(--surface-secondary)] group-hover:bg-white/10 text-[var(--text-secondary)] group-hover:text-white border border-[var(--border-color)] group-hover:border-white/20 rounded-xl transition-all duration-200"
+                          aria-label={`Open ${link.label} for ${project.title}`}
+                        >
+                          <FaExternalLinkAlt className="text-[10px]" />
+                          {link.label}
+                        </motion.a>
+                      ))}
                   </div>
 
                   <motion.div

@@ -323,7 +323,7 @@ function App() {
           ease: [0.33, 1, 0.68, 1],
         }}
       >
-        <Footer />
+        {/* <Footer /> */}
       </motion.div>
 
       {/* Enhanced section navigation dots */}
@@ -379,24 +379,7 @@ function App() {
         }}
       />
 
-      {/* Subtle custom cursor effect */}
-      <motion.div
-        className="fixed w-3 h-3 rounded-full pointer-events-none z-50 mix-blend-difference hidden lg:block"
-        style={{
-          left: `${mousePosition.x}%`,
-          top: `${mousePosition.y}%`,
-          background: "rgba(255, 255, 255, 0.6)",
-          transform: "translate(-50%, -50%)",
-        }}
-        animate={{
-          scale: [1, 1.2, 1],
-        }}
-        transition={{
-          duration: 2,
-          repeat: Infinity,
-          ease: [0.4, 0, 0.6, 1],
-        }}
-      />
+
 
       {/* Ambient noise texture overlay */}
       <div

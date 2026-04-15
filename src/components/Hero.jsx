@@ -287,7 +287,7 @@ const Hero = () => {
               </a>
 
               {/* Tertiary CTA (Strong Differentiator) */}
-              <button
+              {/* <button
                 onClick={() => document.dispatchEvent(new CustomEvent('navigate', { detail: 'contact' }))}
                 className="btn-ghost group"
               >
@@ -295,7 +295,7 @@ const Hero = () => {
                   Let’s Build Together
                   <FaHandshake className="text-sm group-hover:rotate-12 transition-transform duration-300" />
                 </span>
-              </button>
+              </button> */}
 
               {/* Voice Button */}
               <button

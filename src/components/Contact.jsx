@@ -126,7 +126,7 @@ const Contact = () => {
         <div className="absolute bottom-1/4 right-0 w-80 h-80 bg-gradient-to-bl from-[var(--accent-secondary)]/5 via-[var(--accent-primary)]/5 to-transparent rounded-full blur-3xl animate-pulse delay-1000" />
       </div>
 
-      <div className="relative z-10 max-w-7xl mx-auto px-6">
+      <div className="relative z-10 container mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -140,15 +140,14 @@ const Contact = () => {
             <span className="text-sm font-medium text-[var(--text-secondary)]">Open to Opportunities</span>
           </div>
           
-          <h2 className="text-4xl lg:text-6xl font-bold text-[var(--text-primary)] mb-6">
-            Let's Build Scalable
-            <br />
-            <span className="text-transparent bg-gradient-to-r from-[var(--accent-primary)] via-[var(--accent-secondary)] to-[var(--accent-primary)] bg-clip-text">
+          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-[var(--text-primary)] mb-6">
+            Let's Build Scalable{" "}
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-purple-600">
               Intelligent Systems
             </span>
           </h2>
           
-          <p className="text-lg text-[var(--text-secondary)] max-w-2xl mx-auto leading-relaxed">
+          <p className="text-sm sm:text-base lg:text-lg text-[var(--text-secondary)] max-w-2xl mx-auto leading-relaxed">
             Currently working as a Software Engineer (SDE I) building AI-powered systems, 
             real-time applications, and production-ready platforms.
             <br /><br />
@@ -161,7 +160,7 @@ const Contact = () => {
           whileInView="visible"
           viewport={{ once: true, margin: "-100px" }}
           variants={containerVariants}
-          className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16"
+          className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16"
         >
           {/* Contact Form */}
           <motion.div variants={itemVariants}>
@@ -347,7 +346,7 @@ const Contact = () => {
               <h3 className="text-2xl font-bold text-[var(--text-primary)] mb-4">
                 Get in Touch
               </h3>
-              <p className="text-[var(--text-secondary)] leading-relaxed">
+              <p className="text-sm sm:text-base lg:text-lg text-[var(--text-secondary)] leading-relaxed">
                 Prefer direct communication? Reach out via any of the channels below.
                 <br /><br />
                 Always open to discussing engineering roles, AI systems, and product development.
@@ -400,7 +399,7 @@ const Contact = () => {
                   <h4 className="text-[var(--text-primary)] font-bold text-lg mb-2">
                     Based in Jharkhand, India
                   </h4>
-                  <p className="text-[var(--text-secondary)] text-sm leading-relaxed">
+                  <p className="text-[var(--text-secondary)] text-sm sm:text-base leading-relaxed">
                     Available for remote roles • Open to relocation for the right opportunity
                   </p>
                   <div className="flex items-center gap-2 mt-3">
