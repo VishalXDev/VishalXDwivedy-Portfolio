@@ -8,9 +8,10 @@ const Education = () => {
       institution: "Chandigarh University",
       degree: "B.Tech, Computer Science",
       period: "2022 – 2026",
+      score: "7.8 CGPA",
       icon: "🎓",
       highlight: "Focus on Software Engineering, AI Systems & Scalable Applications",
-      status: "Pursuing",
+      status: "Completed",
       points: [
         "Participated in coding contests and technical competitions",
         "Built projects focused on real-world problem solving",
