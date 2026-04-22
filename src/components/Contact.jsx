@@ -397,7 +397,7 @@ const Contact = () => {
                 </div>
                 <div>
                   <h4 className="text-[var(--text-primary)] font-bold text-lg mb-2">
-                    Based in Jharkhand, India
+                    Currently in Chandigarh, India
                   </h4>
                   <p className="text-[var(--text-secondary)] text-sm sm:text-base leading-relaxed">
                     Available for remote roles • Open to relocation for the right opportunity
